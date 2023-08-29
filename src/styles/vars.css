@@ -1,0 +1,83 @@
+:root {
+    /* colors */
+    --c-color-white: #ffffff;
+    --c-color-black: #000000;
+    
+    --colors : (
+      primary:#409eff,
+      success:#67c23a,
+      warning:#e6a23c,
+      info:#909399,
+      danger:#f56c6c
+    );
+    
+    @each $type,$color in var(--colors) {
+      --c-color-$(type): $(color);
+      @for $level from 3 to 9 by 2 {
+        --c-color-$(type)-light-$(level): mix(#fff, $(color), .$(level))
+      }
+      --c-color-$(type)-light-8: mix(#fff, $(color), .8);
+      --c-color-$(type)-dark-2: mix(#000, $(color), .2);
+    }
+
+
+    /* --c-color-primary: #409eff;
+    --c-color-primary-light-3: #79bbff;
+    --c-color-primary-light-5: #a0cfff;
+    --c-color-primary-light-7: #c6e2ff;
+    --c-color-primary-light-8: #d9ecff;
+    --c-color-primary-light-9: #ecf5ff;
+    --c-color-primary-dark-2: #337ecc; */
+
+  
+  
+    --c-bg-color: #ffffff;
+    --c-bg-color-page: #f2f3f5;
+    --c-bg-color-overlay: #ffffff;
+
+    --c-text-color-primary: #303133;
+    --c-text-color-regular: #606266;
+    --c-text-color-secondary: #909399;
+    --c-text-color-placeholder: #a8abb2;
+    --c-text-color-disabled: #c0c4cc;
+
+    --c-border-color: #dcdfe6;
+    --c-border-color-light: #e4e7ed;
+    --c-border-color-lighter: #ebeef5;
+    --c-border-color-extra-light: #f2f6fc;
+    --c-border-color-dark: #d4d7de;
+    --c-border-color-darker: #cdd0d6;
+    
+    --c-fill-color: #f0f2f5;
+    --c-fill-color-light: #f5f7fa;
+    --c-fill-color-lighter: #fafafa;
+    --c-fill-color-extra-light: #fafcff;
+    --c-fill-color-dark: #ebedf0;
+    --c-fill-color-darker: #e6e8eb;
+    --c-fill-color-blank: #ffffff;
+  
+    /* border */
+    --c-border-width: 1px;
+    --c-border-style: solid;
+    --c-border-color-hover: var(--c-text-color-disabled);
+    --c-border: var(--c-border-width) var(--c-border-style) var(--c-border-color);
+    --c-border-radius-base: 4px;
+    --c-border-radius-small: 2px;
+    --c-border-radius-round: 20px;
+    --c-border-radius-circle: 100%;
+  
+    /*font*/
+    --c-font-size-extra-large: 20px;
+    --c-font-size-large: 18px;
+    --c-font-size-medium: 16px;
+    --c-font-size-base: 14px;
+    --c-font-size-small: 13px;
+    --c-font-size-extra-small: 12px;
+    --c-font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", Arial, sans-serif;
+    --c-font-weight-primary: 500;
+  
+    /*disabled*/
+    --c-disabled-bg-color: var(--c-fill-color-light);
+    --c-disabled-text-color: var(--c-text-color-placeholder);
+    --c-disabled-border-color: var(--c-border-color-light);
+  }

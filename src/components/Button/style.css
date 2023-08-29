@@ -1,0 +1,124 @@
+
+.c-button {
+    --c-button-font-weight: var(--c-font-weight-primary);
+    --c-button-border-color: var(--c-border-color);
+    --c-button-bg-color: var(--c-fill-color-blank);
+    --c-button-text-color: var(--c-text-color-regular);
+    --c-button-disabled-text-color: var(--c-disabled-text-color);
+    --c-button-disabled-bg-color: var(--c-fill-color-blank);
+    --c-button-disabled-border-color: var(--c-border-color-light);
+    --c-button-hover-text-color: var(--c-color-primary);
+    --c-button-hover-bg-color: var(--c-color-primary-light-9);
+    --c-button-hover-border-color: var(--c-color-primary-light-7);
+    --c-button-active-text-color: var(--c-button-hover-text-color);
+    --c-button-active-border-color: var(--c-color-primary);
+    --c-button-active-bg-color: var(--c-button-hover-bg-color);
+    --c-button-outline-color: var(--c-color-primary-light-5);
+    --c-button-active-color: var(--c-text-color-primary);
+  }
+  .c-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    height: 32px;
+    white-space: nowrap;
+    cursor: pointer;
+    color: var(--c-button-text-color);
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    transition: .1s;
+    font-weight: var(--c-button-font-weight);
+    user-select: none;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    background-color: var(--c-button-bg-color);
+    border: var(--c-border);
+    border-color: var(--c-button-border-color);
+    padding: 8px 15px;
+    font-size: var(--c-font-size-base);
+    border-radius: var(--c-border-radius-base);
+    & + & {
+      margin-left: 12px;
+    }
+    &:hover,
+    &:focus {
+      color: var(--c-button-hover-text-color);
+      border-color: var(--c-button-hover-border-color);
+      background-color: var(--c-button-hover-bg-color);
+      outline: none;    
+    }
+    &:active {
+      color: var(--c-button-active-text-color);
+      border-color: var(--c-button-active-border-color);
+      background-color: var(--c-button-active-bg-color);
+      outline: none;
+    }
+    &.is-plain {
+      --c-button-hover-text-color: var(--c-color-primary);
+      --c-button-hover-bg-color: var(--c-fill-color-blank);
+      --c-button-hover-border-color: var(--c-color-primary);    
+    }
+    /*round*/
+    &.is-round {
+      border-radius: var(--c-border-radius-round);
+    }
+    /*circle*/
+    &.is-circle {
+      border-radius: 50%;
+      padding: 8px;
+    }
+    /*disabled*/
+    &.is-disabled, &.is-disabled:hover, &.is-disabled:focus, 
+    &[disabled], &[disabled]:hover, &[disabled]:focus 
+    {
+      color: var(--c-button-disabled-text-color);
+      cursor: not-allowed;
+      background-image: none;
+      background-color: var(--c-button-disabled-bg-color);
+      border-color: var(--c-button-disabled-border-color);
+    }
+  }
+  @each $val in primary,success,warning,info,danger {
+    .c-button--$(val) {
+      --c-button-text-color: var(--c-color-white);
+      --c-button-bg-color: var(--c-color-$(val));
+      --c-button-border-color: var(--c-color-$(val));
+      --c-button-outline-color: var(--c-color-$(val)-light-5);
+      --c-button-active-color: var(--c-color-$(val)-dark-2);
+      --c-button-hover-text-color: var(--c-color-white);
+      --c-button-hover-bg-color: var(--c-color-$(val)-light-3);
+      --c-button-hover-border-color: var(--c-color-$(val)-light-3);
+      --c-button-active-bg-color: var(--c-color-$(val)-dark-2);
+      --c-button-active-border-color: var(--c-color-$(val)-dark-2);
+      --c-button-disabled-text-color: var(--c-color-white);
+      --c-button-disabled-bg-color: var(--c-color-$(val)-light-5);
+      --c-button-disabled-border-color: var(--c-color-$(val)-light-5);
+    }
+    .c-button--$(val).is-plain {
+      --c-button-text-color: var(--c-color-$(val));
+      --c-button-bg-color: var(--c-color-$(val)-light-9);
+      --c-button-border-color: var(--c-color-$(val)-light-5);
+      --c-button-hover-text-color: var(--c-color-white);
+      --c-button-hover-bg-color: var(--c-color-$(val));
+      --c-button-hover-border-color: var(--c-color-$(val));
+      --c-button-active-text-color: var(--c-color-white);
+    }
+  }
+  .c-button--large {
+    --c-button-size: 40px;
+    height: var(--c-button-size);
+    padding: 12px 19px;
+    font-size: var(--c-font-size-base);
+    border-radius: var(--c-border-radius-base);
+  }
+  .c-button--small {
+    --c-button-size: 24px;
+    height: var(--c-button-size);
+    padding: 5px 11px;
+    font-size: 12px;
+    border-radius: calc(var(--c-border-radius-base) - 1px);
+  }
+  
+  
