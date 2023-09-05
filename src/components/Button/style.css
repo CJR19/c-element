@@ -79,6 +79,10 @@
       background-color: var(--c-button-disabled-bg-color);
       border-color: var(--c-button-disabled-border-color);
     }
+
+    [class*=c-icon] + span {
+      margin-left: 6px;
+    }
   }
   @each $val in primary,success,warning,info,danger {
     .c-button--$(val) {

@@ -42,7 +42,17 @@ export interface ButtonProps {
      * 是否自动获取焦点
      * @type {boolean}
      */
-    autofocus?: boolean
+    autofocus?: boolean,
+    /**
+     * 按钮图标
+     * @type {string}
+     */
+    icon?: string,
+    /**
+     * 是否显示加载状态
+     * @type {boolean}
+     */
+    loading?: boolean,
 }
 
 export interface ButtonInstance {
