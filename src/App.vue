@@ -1,6 +1,15 @@
 <template>
-
-  <a href="#">link</a>
+  <Icon icon="fa-solid fa-user-secret"  size="5x" />
+  <Icon icon="fa-solid fa-user-secret"  size="5x" type="primary"/>
+  <Icon icon="fa-solid fa-user-secret"  size="5x" type="success"/>
+  <Icon icon="fa-solid fa-user-secret"  size="5x" type="warning"/>
+  <Icon icon="fa-solid fa-user-secret"  size="5x" type="info"/>
+  <Icon icon="fa-solid fa-user-secret"  size="5x" type="danger"/>
+  <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
+  <br>
+  <a href="#">
+    link
+  </a>
   <h1>hello</h1>
   <h2>hello</h2>
   <h3>hello</h3>
@@ -21,6 +30,9 @@
   <Button type="info" plain>info</Button>
   <Button type="danger" plain>danger</Button>
   <Button type="warning" plain>warning</Button>
+  <br><br>
+  <Button type="primary" loading >warning</Button>
+  <Button type="primary"  icon="fa-solid fa-user-secret" >warning</Button>
   <br><br>
   {{ openValue }}
 
@@ -50,6 +62,8 @@ import { ref,onMounted } from 'vue';
 import Button from './components/Button/Button.vue';
 import CollapseItem from './components/Collapse/CollapseItem.vue';
 import Collapse from './components/Collapse/Collapse.vue';
+import Icon from './components/Icon/Icon.vue'
+
 import type { ButtonInstance } from './components/Button/types';
 
 const ButtonRef = ref<ButtonInstance | null>(null)

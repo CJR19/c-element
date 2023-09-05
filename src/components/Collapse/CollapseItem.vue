@@ -15,6 +15,7 @@
             @click="handleClick"
         >
             <slot name="title">{{ name }}</slot>
+            <Icon :icon="['fas', 'angle-right']" class="angle" :class="{'angle-active': isActive}"></Icon>
         </div>
         <Transition v-on="transitionEvent">
             <div class="c-collapse-item__warpper"  v-show="isActive">
@@ -25,13 +26,13 @@
                     <slot/>
                 </div>
             </div>
-
         </Transition>
     </div>
 </template>
 
 <script setup lang="ts">
 import { inject,computed } from 'vue'
+import Icon from '../Icon/Icon.vue';
 import { CollapseContextKey } from './types'
 import type { CollapseItemProps } from './types'
 
