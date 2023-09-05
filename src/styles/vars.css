@@ -80,4 +80,8 @@
     --c-disabled-bg-color: var(--c-fill-color-light);
     --c-disabled-text-color: var(--c-text-color-placeholder);
     --c-disabled-border-color: var(--c-border-color-light);
+
+    /* duration */
+    --c-transition-duration-fast:.2s;
+    --c-transition-duration: .3s;
   }

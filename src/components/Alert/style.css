@@ -1,0 +1,90 @@
+.c-alert {
+    --c-alert-bg-color: var(--c-color-info-light-9);
+    --c-alert-padding: 8px 16px;
+    --c-alert-border-radius-base: var(--c-border-radius-base);
+    --c-alert-title-font-size: 13px;
+    --c-alert-description-font-size: 12px;
+    --c-alert-close-font-size: 12px;
+    --c-alert-close-customed-font-size: 13px;
+    --c-alert-icon-size: 16px;
+    --c-alert-icon-large-size: 28px;
+    --c-alert-text-align: flex-star;
+    --c-alert-close-btn-color:var(--c-text-color-placeholder);
+    width: 100%;
+    padding: var(--c-alert-padding);
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: var(--c-alert-border-radius-base);
+    position: relative;
+    background-color: var(--c-alert-bg-color);
+    overflow: hidden;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: var(--c-alert-text-align);
+    transition: opacity var(--c-transition-duration-fast) ease;
+
+    &.is-center {
+        --c-alert-text-align: center;
+    }
+}
+
+
+@each $val in success,warning,info,danger {
+    .c-alert--$(val)--light {
+        --c-alert-bg-color: var(--c-color-$(val)-light-9);
+        color: var(--c-color-$(val));
+    }
+    .c-alert--$(val)--dark {
+        --c-alert-bg-color: var(--c-color-$(val)-dark-2);
+        color: #fff;
+    }
+}
+
+.c-alert__content {
+    margin-left: 5px;
+}
+
+.c-alert__icon {
+    font-size: var(--c-alert-icon-size);
+    width: var(--c-alert-icon-size);
+    &.is-big {
+        font-size: var(--c-alert-icon-large-size);
+        width: var(--c-alert-icon-large-size);
+    }
+    &.theme--dark {
+        color: #fff;
+    }
+}
+
+.c-alert__title {
+    font-size: var(--c-alert-title-font-size);
+}
+
+.c-alert__description {
+    margin: 5px 0;
+    font-size: var(--c-alert-description-font-size);
+}
+
+.c-alert__close-btn {
+    font-size: var(--c-alert-close-font-size);
+    opacity: 1;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: var(--c-alert-close-btn-color);
+    cursor: pointer;
+    &.theme--dark {
+        --c-alert-close-btn-color:#fff;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}

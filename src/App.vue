@@ -54,7 +54,29 @@
     </CollapseItem>
   </Collapse>
   <br><br>
+  <Alert type="success" title="通知" description="描述" show-icon></Alert>
+  <Alert type="info" title="通知" description="描述" show-icon></Alert>
+  <Alert type="warning" title="通知" description="描述" show-icon></Alert>
+  <Alert type="danger" title="警告" show-icon>
+    <template #description>
+      <h3>
+        <a href="https://www.baidu.com">自定义链接</a>
+      </h3>
+    </template>
+  </Alert>
   
+  <Alert type="success" title="通知" description="描述" show-icon effect="dark"></Alert>
+  <Alert type="info" title="通知" description="描述" show-icon effect="dark"></Alert>
+  <Alert type="warning" title="通知" description="描述" show-icon effect="dark"></Alert>
+  <Alert type="danger" title="警告" show-icon effect="dark">
+    <template #description>
+      <h3>
+        <a href="https://www.baidu.com">自定义链接</a>
+      </h3>
+    </template>
+  </Alert>
+
+
 </template>
 
 <script setup lang="ts">
@@ -63,6 +85,7 @@ import Button from './components/Button/Button.vue';
 import CollapseItem from './components/Collapse/CollapseItem.vue';
 import Collapse from './components/Collapse/Collapse.vue';
 import Icon from './components/Icon/Icon.vue'
+import Alert from './components/Alert/Alert.vue'
 
 import type { ButtonInstance } from './components/Button/types';
 
@@ -79,5 +102,7 @@ onMounted(()=>{
 
 
 <style scoped>
-
+.c-alert {
+  margin-top: 10px;
+}
 </style>
