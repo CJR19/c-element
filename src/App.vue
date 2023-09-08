@@ -1,11 +1,31 @@
 <template>
-  <Icon icon="fa-solid fa-user-secret"  size="5x" />
+  <Icon icon="fa-solid fa-user-secret"  :size="iconSize" />
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="primary"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="success"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="warning"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="info"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="danger"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
+  <br>
+  <Tooltip content="你好" placement="top" :trigger="trigger">
+    <template #content>
+      你好
+    </template>
+    <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
+  </Tooltip>
+
+  <Tooltip content="你好" placement="top" trigger="hover"  :open-delay="200">
+    <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
+  </Tooltip>
+
+  <Tooltip content="你好" :popper-options="options" placement="top" trigger="click" manual ref="TooltipRef">
+    <template #content>
+      <div style="display: inline-block;background-color: #fff;padding: 0px;border:1px solid #ccc">你好</div>
+    </template>
+    <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
+  </Tooltip>
+  <Button type="primary" @click="openTooltip">打开</Button>
+  <Button type="primary" @click="closeTooltip">关闭</Button>
   <br>
   <a href="#">
     link
@@ -86,16 +106,34 @@ import CollapseItem from './components/Collapse/CollapseItem.vue';
 import Collapse from './components/Collapse/Collapse.vue';
 import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
+import Tooltip from '@/components/Tooltip/Tooltip.vue'
 
 import type { ButtonInstance } from './components/Button/types';
+import type { TooltipInstance } from './components/Tooltip/types';
+import type { size } from './components/Icon/types';
+import type { Options } from '@popperjs/core';
 
 const ButtonRef = ref<ButtonInstance | null>(null)
-const openValue = ref([])
+const TooltipRef = ref<TooltipInstance | null>(null)
+const openValue = ref<string[]>([])
+const trigger = ref<'hover' | 'click'>('hover')
+const iconSize = ref<size>('5x')
+const options: Partial<Options> = { placement: 'top-end', strategy: 'fixed' }
 
+const openTooltip = () => {
+  TooltipRef.value?.show()
+}
+const closeTooltip = () => {
+  TooltipRef.value?.hide()
+}
 onMounted(()=>{
   if (ButtonRef.value) {
     console.log('button ref',ButtonRef.value.ref)
   }
+  setTimeout(() => {
+    trigger.value = 'click'
+    openValue.value = ['title1','title2']
+  }, 2000);
 })
 
 </script>
