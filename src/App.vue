@@ -7,16 +7,16 @@
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="danger"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
   <br>
-  <Tooltip content="你好" placement="top" :trigger="trigger">
+  <Tooltip content="你好" placement="top">
     <template #content>
       你好
     </template>
     <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
   </Tooltip>
 
-  <Tooltip content="你好" placement="top" trigger="hover"  :open-delay="200">
+  <Dropdown :menu-options="menuOptions" content="你好" placement="top" trigger="hover"  >
     <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
-  </Tooltip>
+  </Dropdown>
 
   <Tooltip content="你好" :popper-options="options" placement="top" trigger="click" manual ref="TooltipRef">
     <template #content>
@@ -100,18 +100,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref,onMounted } from 'vue';
+import { ref,onMounted, h } from 'vue';
 import Button from './components/Button/Button.vue';
 import CollapseItem from './components/Collapse/CollapseItem.vue';
 import Collapse from './components/Collapse/Collapse.vue';
 import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from '@/components/Tooltip/Tooltip.vue'
+import Dropdown from '@/components/Dropdown/Dropdown'
 
 import type { ButtonInstance } from './components/Button/types';
 import type { TooltipInstance } from './components/Tooltip/types';
 import type { size } from './components/Icon/types';
 import type { Options } from '@popperjs/core';
+import type { MenuOption } from './components/Dropdown/types';
 
 const ButtonRef = ref<ButtonInstance | null>(null)
 const TooltipRef = ref<TooltipInstance | null>(null)
@@ -119,7 +121,12 @@ const openValue = ref<string[]>([])
 const trigger = ref<'hover' | 'click'>('hover')
 const iconSize = ref<size>('5x')
 const options: Partial<Options> = { placement: 'top-end', strategy: 'fixed' }
-
+const menuOptions:MenuOption[] = [
+  { key:1,label:'1111' },
+  { key:2,label:h('b','this is bold') },
+  { key:3,label:'333' },
+  { key:4,label:'444' },
+]
 const openTooltip = () => {
   TooltipRef.value?.show()
 }
