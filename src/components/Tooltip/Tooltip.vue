@@ -8,7 +8,7 @@
             <slot />
         </div>
         <Transition :name="transition">
-            <div v-if="isOpen" class="c-tooltip__popper" ref="popperNode">
+            <div v-if="isOpen"  v-on="popperEvents" class="c-tooltip__popper" ref="popperNode">
                 <slot name="content">
                     {{ content }}
                 </slot>
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<TooltipProps>(),{
     trigger: 'hover',
     transition: 'fade',
     openDelay: 0,
-    closeDelay: 0
+    closeDelay: 80
 })
 
 const emits = defineEmits<TooltipEmits>()
@@ -45,6 +45,7 @@ const container = ref<HTMLElement>()
 let poperInstance: null | Instance = null
 let events: Record<string,Function> = reactive({})
 let outEvents: Record<string,Function> = reactive({})
+let popperEvents: Record<string,Function> = reactive({})
 
 
 const popperOptions = computed(()=>{
@@ -64,7 +65,6 @@ const popperOptions = computed(()=>{
 })
 
 const open = ()=>{
-    console.log('open')
     isOpen.value = true
     emits('visible-change',true)
 }
@@ -95,10 +95,12 @@ const openDebounce = debounce(open,props.openDelay)
 const closeDebounce = debounce(close,props.closeDelay)
 
 const openFinal = ()=>{
+    console.log('进入')
     closeDebounce.cancel()
     openDebounce()
 }
 const closeFinal = ()=> {
+    console.log('离开')
     openDebounce.cancel()
     closeDebounce()
 }
@@ -121,6 +123,10 @@ const attachEvents = () => {
     if (props.trigger === 'hover') {
         events['mouseenter'] = openFinal
         outEvents['mouseleave'] = closeFinal
+      
+            popperEvents['mouseenter'] = openFinal
+            popperEvents['mouseleave'] = closeFinal
+        
     } else if (props.trigger === 'click') {
         events['click'] = togglePopper
     }
