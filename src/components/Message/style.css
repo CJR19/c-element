@@ -1,0 +1,12 @@
+.c-message {
+    width: max-content;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    border: 1px solid red;
+}
+
+.c-message__close {
+    
+}

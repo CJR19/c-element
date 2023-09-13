@@ -96,7 +96,7 @@
     </template>
   </Alert>
 
-
+  <!-- <Message show-close :duration="0" >12312321</Message> -->
 </template>
 
 <script setup lang="ts">
@@ -108,7 +108,8 @@ import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from '@/components/Tooltip/Tooltip.vue'
 import Dropdown from '@/components/Dropdown/Dropdown'
-
+import Message from './components/Message/Message.vue';
+import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
 import type { TooltipInstance } from './components/Tooltip/types';
 import type { size } from './components/Icon/types';
@@ -134,6 +135,9 @@ const closeTooltip = () => {
   TooltipRef.value?.hide()
 }
 onMounted(()=>{
+  createMessage({message:'hello world1'})
+  createMessage({message:'hello world2'})
+  createMessage({message:'hello world3'})
   if (ButtonRef.value) {
     console.log('button ref',ButtonRef.value.ref)
   }
