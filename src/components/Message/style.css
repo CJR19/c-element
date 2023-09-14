@@ -1,12 +1,64 @@
 .c-message {
-    width: max-content;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 20px;
-    border: 1px solid red;
+    --c-message-bg-color: var(--c-color-info-light-9);
+    --c-message-border-color: var(--c-border-color-lighter);
+    --c-message-padding: 15px 19px;
+    --c-message-close-size: 16px;
+    --c-message-close-icon-color: var(--c-text-color-placeholder);
+    --c-message-close-hover-color: var(--c-text-color-secondary);
+    --c-message-text-color: var(--c-color-info);
 }
 
-.c-message__close {
-    
+.c-message {
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    box-sizing: border-box;
+    border-radius: var(--c-border-radius-base);
+    border-width: var(--c-border-width);
+    border-style: var(--c-border-style);
+    border-color: var(--c-message-border-color);
+    position: fixed;
+    left: 50%;
+    top:20px;
+    transform: translateX(-50%);
+    background-color: var(--c-message-bg-color);
+    padding: var(--c-message-padding);
+    display: flex;
+    align-items: center;
+    transition: 
+        top var(--c-transition-duration) ease-in-out,
+        transform var(--c-transition-duration) ease-in-out,
+        opacity var(--c-transition-duration) ease-in-out;
+    .c-message__content {
+        color: var(--c-message-text-color); 
+        overflow-wrap: anywhere;
+    }
+    &.is-close .c-message__content {
+        padding-right: 30px;
+    }
+    .c-message__close {
+        display: flex;
+        align-items: center;
+        & svg {
+            cursor: pointer;
+        }
+    }
 }
+
+@each $val in info,success,warning,danger {
+    .c-message--$(val) {
+        --c-message-bg-color: var(--c-color-$(val)-light-9);
+        --c-message-border-color: var(--c-color-$(val)-light-8);
+        --c-message-text-color: var(--c-color-$(val));
+        .c-message__close {
+            --c-icon-color: var(--c-color-$(val));
+        }
+    }
+}
+
+.c-message.fade-up-enter-from,
+.c-message.fade-up-leave-to {
+    opacity: 0;
+    /* top: 0; */
+    transform: translate(-50%,-100%);
+}
+/* .c-message */

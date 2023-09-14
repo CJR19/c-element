@@ -1,11 +1,12 @@
-import { render,h } from 'vue'
+import { render,h,shallowReactive } from 'vue'
 import type { createMessageProps,MessageContext } from './types'
 import MessageConstructor from './Message.vue'
-
+import { useIndex } from '@/hooks/useZindex'
 let seed = 1
-const instances: MessageContext[] = []
+const instances:MessageContext[] = shallowReactive([])
 
 export const createMessage = (props: createMessageProps) => {
+    const { nextZIndex } = useIndex()  
     const id = `message_${seed++}`
     const container = document.createElement('div')
     const onDestory = ()=>{   
@@ -14,14 +15,28 @@ export const createMessage = (props: createMessageProps) => {
         instances.splice(index,1)   
         render(null,container)      
     }
-    const newProps = {...props,onDestory}
+    const manualDestroy = ()=>{
+        const instance = instances.find(item => item.id === id)
+        if (instance) {
+            instance.vm.exposed!.visible.value = false
+        }
+    }
+    const newProps = {
+        ...props,
+        onDestory,
+        id,
+        zIndex:nextZIndex()
+    }
     const vnode = h(MessageConstructor,newProps)
     render(vnode,container)
     document.body.appendChild(container.firstElementChild!)
+    const vm = vnode.component!
     const instance: MessageContext = {
         id,
         vnode,
-        props:newProps
+        vm,
+        props:newProps,
+        destory:manualDestroy
     }
     instances.push(instance)
     return instance
@@ -29,5 +44,14 @@ export const createMessage = (props: createMessageProps) => {
 
 export const getLastInstance = () => {
     return instances[instances.length - 1]
+}
 
+export const getLastBottomOffset = (id:string) => {
+    const index = instances.findIndex(item => item.id === id)
+    if(index <= 0 ) { 
+        return 0
+    } else {
+        const preInstance = instances[index - 1]
+        return preInstance.vm.exposed!.bottomOffset.value
+    }
 }

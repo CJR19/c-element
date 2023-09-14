@@ -108,7 +108,7 @@ import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from '@/components/Tooltip/Tooltip.vue'
 import Dropdown from '@/components/Dropdown/Dropdown'
-import Message from './components/Message/Message.vue';
+
 import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
 import type { TooltipInstance } from './components/Tooltip/types';
@@ -135,9 +135,20 @@ const closeTooltip = () => {
   TooltipRef.value?.hide()
 }
 onMounted(()=>{
-  createMessage({message:'hello world1'})
-  createMessage({message:'hello world2'})
-  createMessage({message:'hello world3'})
+
+  createMessage({message:'hello world1',duration:2000,showClose:true,})
+  setTimeout(() => {
+    createMessage({message:'hello world1',duration:2000,showClose:true,type:'success'})
+  }, 1000);
+  setTimeout(() => {
+    createMessage({message:'hello world2',duration:2000,showClose:true,type: 'danger'})
+  }, 2000);
+  setTimeout(() => {
+    createMessage({message:'hello world3',duration:2000,showClose:true, type: 'warning'})
+  }, 3000);
+  setTimeout(() => {
+    createMessage({message:'hello world3',duration:2000,showClose:true, type: 'info'})
+  }, 4000);
   if (ButtonRef.value) {
     console.log('button ref',ButtonRef.value.ref)
   }

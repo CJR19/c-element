@@ -84,4 +84,5 @@
     /* duration */
     --c-transition-duration-fast:.2s;
     --c-transition-duration: .3s;
+    --c-transition-duration-slow: 0.6s;
   }
