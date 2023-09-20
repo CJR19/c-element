@@ -33,6 +33,7 @@
     user-select: none;
     vertical-align: middle;
     -webkit-appearance: none;
+    appearance: none;
     background-color: var(--c-button-bg-color);
     border: var(--c-border);
     border-color: var(--c-button-border-color);
@@ -70,7 +71,9 @@
       padding: 8px;
     }
     /*disabled*/
-    &.is-disabled, &.is-disabled:hover, &.is-disabled:focus, 
+    &.is-disabled, 
+    &.is-disabled:hover, 
+    &.is-disabled:focus, 
     &[disabled], &[disabled]:hover, &[disabled]:focus 
     {
       color: var(--c-button-disabled-text-color);
@@ -85,28 +88,28 @@
     }
   }
   @each $val in primary,success,warning,info,danger {
-    .c-button--$(val) {
+    .c-button--#{$val} {
       --c-button-text-color: var(--c-color-white);
-      --c-button-bg-color: var(--c-color-$(val));
-      --c-button-border-color: var(--c-color-$(val));
-      --c-button-outline-color: var(--c-color-$(val)-light-5);
-      --c-button-active-color: var(--c-color-$(val)-dark-2);
+      --c-button-bg-color: var(--c-color-#{$val});
+      --c-button-border-color: var(--c-color-#{$val});
+      --c-button-outline-color: var(--c-color-#{$val}-light-5);
+      --c-button-active-color: var(--c-color-#{$val}-dark-2);
       --c-button-hover-text-color: var(--c-color-white);
-      --c-button-hover-bg-color: var(--c-color-$(val)-light-3);
-      --c-button-hover-border-color: var(--c-color-$(val)-light-3);
-      --c-button-active-bg-color: var(--c-color-$(val)-dark-2);
-      --c-button-active-border-color: var(--c-color-$(val)-dark-2);
+      --c-button-hover-bg-color: var(--c-color-#{$val}-light-3);
+      --c-button-hover-border-color: var(--c-color-#{$val}-light-3);
+      --c-button-active-bg-color: var(--c-color-#{$val}-dark-2);
+      --c-button-active-border-color: var(--c-color-#{$val}-dark-2);
       --c-button-disabled-text-color: var(--c-color-white);
-      --c-button-disabled-bg-color: var(--c-color-$(val)-light-5);
-      --c-button-disabled-border-color: var(--c-color-$(val)-light-5);
+      --c-button-disabled-bg-color: var(--c-color-#{$val}-light-5);
+      --c-button-disabled-border-color: var(--c-color-#{$val}-light-5);
     }
-    .c-button--$(val).is-plain {
-      --c-button-text-color: var(--c-color-$(val));
-      --c-button-bg-color: var(--c-color-$(val)-light-9);
-      --c-button-border-color: var(--c-color-$(val)-light-5);
+    .c-button--#{$val}.is-plain {
+      --c-button-text-color: var(--c-color-#{$val});
+      --c-button-bg-color: var(--c-color-#{$val}-light-9);
+      --c-button-border-color: var(--c-color-#{$val}-light-5);
       --c-button-hover-text-color: var(--c-color-white);
-      --c-button-hover-bg-color: var(--c-color-$(val));
-      --c-button-hover-border-color: var(--c-color-$(val));
+      --c-button-hover-bg-color: var(--c-color-#{$val});
+      --c-button-hover-border-color: var(--c-color-#{$val});
       --c-button-active-text-color: var(--c-color-white);
     }
   }

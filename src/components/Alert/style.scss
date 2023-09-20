@@ -31,15 +31,16 @@
 
 
 @each $val in success,warning,info,danger {
-    .c-alert--$(val)--light {
-        --c-alert-bg-color: var(--c-color-$(val)-light-9);
-        color: var(--c-color-$(val));
+    .c-alert--#{$val}--light {
+        --c-alert-bg-color: var(--c-color-#{$val}-light-9);
+        color: var(--c-color-#{$val});
     }
-    .c-alert--$(val)--dark {
-        --c-alert-bg-color: var(--c-color-$(val)-dark-2);
+    .c-alert--#{$val}--dark {
+        --c-alert-bg-color: var(--c-color-#{$val}-dark-2);
         color: #fff;
     }
 }
+
 
 .c-alert__content {
     margin-left: 5px;

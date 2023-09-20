@@ -1,0 +1,90 @@
+$space-base   : 16px !default;
+$space-x-base : $space-base !default;
+$space-y-base : $space-base !default;
+
+$spaces: (
+    'none': (x: 0, y: 0),
+    'xs': (x: ($space-x-base * .25), y: ($space-y-base * .25)),
+    'sm': (x: ($space-x-base * .5), y: ($space-y-base * .5)),
+    'md': (x: $space-x-base, y: $space-y-base),
+    'lg': (x: ($space-x-base * 1.5), y: ($space-y-base * 1.5)), 
+    'xl': (x: ($space-x-base * 3), y: ($space-y-base * 3))
+) !default;
+
+
+/*
+    c-[p|m][t|r|b|l|a|x|y]-[none|auto|xs|sm|md|lg|xl]
+    T       D                   S
+
+*/
+
+@each $space, $value in $spaces {
+  .c-pa-#{$space} {
+    padding: map-get($value, "y") map-get($value, "x");
+  }
+  .c-pl-#{$space} {
+    padding-left: map-get($value, "x");
+  }
+  .c-pr-#{$space} {
+    padding-right: map-get($value, "x");
+  }
+  .c-pt-#{$space} {
+    padding-top: map-get($value, "y");
+  }
+  .c-pb-#{$space} {
+    padding-bottom: map-get($value, "y");
+  }
+  .c-px-#{$space} {
+    padding-left: map-get($value, "x");
+    padding-right: map-get($value, "x");
+  }
+  .c-py-#{$space} {
+    padding-top: map-get($value, "y");
+    padding-bottom: map-get($value, "y");
+  }
+
+  .c-ma-#{$space} {
+    margin: map-get($value, "y") map-get($value, "x");
+  }
+  .c-ml-#{$space} {
+    margin-left: map-get($value, "x");
+  }
+  .c-mr-#{$space} {
+    margin-right: map-get($value, "x");
+  }
+  .c-mt-#{$space} {
+    margin-top: map-get($value, "y");
+  }
+  .c-mb-#{$space} {
+    margin-bottom: map-get($value, "y");
+  }
+  .c-mx-#{$space} {
+    margin-left: map-get($value, "x");
+    margin-right: map-get($value, "x");
+  }
+  .c-my-#{$space} {
+    margin-top: map-get($value, "y");
+    margin-bottom: map-get($value, "y");
+  }
+}
+
+.q-mt-auto, .q-my-auto {
+  margin-top: auto;
+}
+
+.q-ml-auto {
+  margin-left: auto;
+}
+
+.q-mb-auto, .q-my-auto {
+  margin-bottom: auto;
+}
+
+.q-mr-auto {
+  margin-right: auto;
+}
+
+.q-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}

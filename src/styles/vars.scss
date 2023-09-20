@@ -1,35 +1,37 @@
+/* theme color */
+$colors : (
+        primary:#409eff,
+        success:#67c23a,
+        warning:#e6a23c,
+        info:#909399,
+        danger:#f56c6c
+    );
+
 :root {
     /* colors */
     --c-color-white: #ffffff;
     --c-color-black: #000000;
-    
-    --colors : (
-      primary:#409eff,
-      success:#67c23a,
-      warning:#e6a23c,
-      info:#909399,
-      danger:#f56c6c
-    );
-    
-    @each $type,$color in var(--colors) {
-      --c-color-$(type): $(color);
-      @for $level from 3 to 9 by 2 {
-        --c-color-$(type)-light-$(level): mix(#fff, $(color), .$(level))
-      }
-      --c-color-$(type)-light-8: mix(#fff, $(color), .8);
-      --c-color-$(type)-dark-2: mix(#000, $(color), .2);
-    }
 
-
-    /* --c-color-primary: #409eff;
+    /* Loop theme color
+    --c-color-primary: #409eff;
     --c-color-primary-light-3: #79bbff;
     --c-color-primary-light-5: #a0cfff;
     --c-color-primary-light-7: #c6e2ff;
     --c-color-primary-light-8: #d9ecff;
     --c-color-primary-light-9: #ecf5ff;
-    --c-color-primary-dark-2: #337ecc; */
-
-  
+    --c-color-primary-dark-2: #337ecc; 
+    */
+    @each $type, $color in $colors {      
+        --c-color-#{$type}: #{$color};
+        @for $level from 3 through 9 {
+            @if $level % 2 == 1 {
+                --c-color-#{$type}-light-#{$level}: #{mix(#fff,$color, $level*10%)};      
+            }
+        }
+        --c-color-#{$type}-light-8:#{mix(#fff, $color, 80%)};
+        --c-color-#{$type}-dark-2: #{mix(#000, $color,20%)};
+        --c-color-#{$type}-dark-4: #{mix(#000, $color,40%)};
+    }
   
     --c-bg-color: #ffffff;
     --c-bg-color-page: #f2f3f5;

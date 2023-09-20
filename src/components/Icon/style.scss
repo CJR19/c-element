@@ -10,7 +10,7 @@
 }
 
 @each $val in primary,info,success,warning,danger {
-    .c-icon--$(val) {
-        --c-icon-color: var(--c-color-$(val));
+    .c-icon--#{$val} {
+        --c-icon-color: var(--c-color-#{$val});
     }
 }
