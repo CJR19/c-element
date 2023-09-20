@@ -4,52 +4,52 @@ export type NativeType = 'button' | 'submit' | 'reset'
 
 export interface ButtonProps {
     /**
-     * 按钮类型
+     * button size 
      * @type {'primary' | 'success' | 'warning' | 'danger' | 'info'}
      */
     type?: ButtonType,
     /**
-     * 按钮尺寸
+     * button type 
      * @type {'large' | 'small'}
      */
     size?: ButtonSize,
     /**
-     * 是否为朴素按钮
+     * determine whether it's a plain button  
      * @type {boolean}
      */
     plain?: boolean,
     /**
-     * 是否为圆形按钮
+     * determine whether it's a round button 
      * @type {boolean}
      */
     round?: boolean,
     /**
-     * 是否为圆角按钮
+     * determine whether it's a circle button
      * @type {boolean}
      */
     circle?: boolean,
     /**
-     * 是否禁用按钮
+     * disable the button
      * @type {boolean}
      */
     disabled?: boolean,
     /**
-     * 原生按钮类型
+     * same as native button's type 
      * @type {'button' | 'submit' | 'reset'}
      */
     nativeType?: NativeType,
     /**
-     * 是否自动获取焦点
+     * same as native button's autofocus
      * @type {boolean}
      */
     autofocus?: boolean,
     /**
-     * 按钮图标
+     * icon component
      * @type {string}
      */
     icon?: string,
     /**
-     * 是否显示加载状态
+     * determine whether it's loading
      * @type {boolean}
      */
     loading?: boolean,

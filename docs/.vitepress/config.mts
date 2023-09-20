@@ -1,9 +1,18 @@
 import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
+import { fileURLToPath, URL } from 'node:url'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "My Awesome Project",
   description: "A VitePress Site",
+  vite: {
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('../../src', import.meta.url))
+      }
+    }
+  },
   markdown: {
     config(md) {
       md.use(containerPreview)
@@ -27,7 +36,13 @@ export default defineConfig({
       {
         text: 'Basic',
         items: [
-          { text: 'Button', link: '/components/button' }
+          { text: 'Button', link: '/pages/vue-components/button' }
+        ]
+      },
+      {
+        text: 'Style',
+        items: [
+          { text: 'spacing', link: '/pages/style/spacing' }
         ]
       },
     ],
