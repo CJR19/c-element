@@ -95,12 +95,10 @@ const openDebounce = debounce(open,props.openDelay)
 const closeDebounce = debounce(close,props.closeDelay)
 
 const openFinal = ()=>{
-    console.log('进入')
     closeDebounce.cancel()
     openDebounce()
 }
 const closeFinal = ()=> {
-    console.log('离开')
     openDebounce.cancel()
     closeDebounce()
 }
