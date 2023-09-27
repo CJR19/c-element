@@ -8,14 +8,14 @@
     </div>
     <div class="c-py-sm"> 
         <Button type="primary">primary</Button>
-        <Button type="success">primasuccessry</Button>
+        <Button type="success">success</Button>
         <Button type="info">info</Button>
         <Button type="danger">danger</Button>
         <Button type="warning">warning</Button>
     </div>
     <div class="c-py-sm">
         <Button type="primary" plain>primary</Button>
-        <Button type="success" plain>primasuccessry</Button>
+        <Button type="success" plain>success</Button>
         <Button type="info" plain>info</Button>
         <Button type="danger" plain>danger</Button>
         <Button type="warning" plain>warning</Button>
@@ -30,3 +30,10 @@
 import Button from "@/components/Button/Button.vue"
 
 </script>
+
+<style scoped> 
+.a {
+    text-emphasis: none;
+}
+</style>
+

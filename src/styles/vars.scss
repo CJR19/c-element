@@ -20,6 +20,7 @@ $colors : (
     --c-color-primary-light-8: #d9ecff;
     --c-color-primary-light-9: #ecf5ff;
     --c-color-primary-dark-2: #337ecc; 
+    --c-color-primary-dark-4: #337ecc; 
     */
     @each $type, $color in $colors {      
         --c-color-#{$type}: #{$color};

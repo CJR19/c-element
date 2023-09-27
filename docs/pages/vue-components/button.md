@@ -9,7 +9,12 @@ description: Button 组件的文档
 ## 基础使用
 使用 `type`、`plain`、`round`、`circle` 来定义按钮的样式
 
-<preview path="../../examples/button/basic.vue"></preview>
+
+
+:::demo basic demo
+button/basic
+:::
+
 
 ## Attributes
 

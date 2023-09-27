@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
-import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 import { fileURLToPath, URL } from 'node:url'
+import  demoContainer  from '../utils/demoContainer'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -14,10 +14,14 @@ export default defineConfig({
     }
   },
   markdown: {
+    lineNumbers: true,
     config(md) {
-      md.use(containerPreview)
-      md.use(componentPreview)
-    }
+      md.use(demoContainer)
+    },
+    // theme: {
+    //   light: 'vitesse-light',
+    //   dark: 'material-theme-ocean'
+    // }
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -34,7 +38,7 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Basic',
+        text: 'components',
         items: [
           { text: 'Button', link: '/pages/vue-components/button' }
         ]

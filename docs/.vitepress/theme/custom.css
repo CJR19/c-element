@@ -4,4 +4,6 @@
     --vp-c-brand-2: var(--c-color-primary-light-3);
     --vp-c-brand-3: var(--c-color-primary-light-5);
     --vp-c-brand-soft: var(--c-color-primary-dark-2);   
+
+    /* --vp-code-block-bg: #252525; */
 }
