@@ -9,7 +9,7 @@ related:
 ---
 
 ## Syntax
-```
+```js
 c-[p|m][t|r|b|l|a|x|y]-[none|auto|xs|sm|md|lg|xl]
     T       D                   S
 
