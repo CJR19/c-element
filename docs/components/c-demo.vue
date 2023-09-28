@@ -15,6 +15,7 @@ import "prismjs/themes/prism.css";
 import { reactive ,onMounted,inject} from 'vue';
 import { highlight } from '../utils/highlight'
 import { defineAsyncComponent } from 'vue'
+import { examplesKey } from "../utils/symbolKey";
 const props = defineProps<{
   path: string
   rawSource: string
@@ -38,7 +39,7 @@ const def = reactive<Def>({
   parts: {}
 })
 
-const modules = inject('c-examples') as Record<string, any>
+const modules = inject(examplesKey) as Record<string, any>
 const asyncComp = defineAsyncComponent(modules[`../../examples/${props.path}.vue`])
 
 function parseTemplate (target:string, template:string) {
