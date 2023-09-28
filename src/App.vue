@@ -1,4 +1,9 @@
 <template>
+  <Tabs v-model="tabsActive">
+    <Tab name="1" label="label1" icon="fa-solid fa-user-secret"></Tab>
+    <Tab name="2" label="label2" icon="fa-solid fa-user-secret"></Tab>
+    <Tab name="3" label="label3" icon="fa-solid fa-user-secret"></Tab>
+  </Tabs>
   <Icon icon="fa-solid fa-user-secret"  :size="iconSize" />
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="primary"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="success"/>
@@ -108,6 +113,8 @@ import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from '@/components/Tooltip/Tooltip.vue'
 import Dropdown from '@/components/Dropdown/Dropdown'
+import Tabs from '@/components/Tabs/Tabs.vue'
+import Tab from '@/components/Tabs/Tab.vue'
 
 import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
@@ -115,6 +122,7 @@ import type { TooltipInstance } from './components/Tooltip/types';
 import type { size } from './components/Icon/types';
 import type { Options } from '@popperjs/core';
 import type { MenuOption } from './components/Dropdown/types';
+
 
 const ButtonRef = ref<ButtonInstance | null>(null)
 const TooltipRef = ref<TooltipInstance | null>(null)
@@ -134,6 +142,9 @@ const openTooltip = () => {
 const closeTooltip = () => {
   TooltipRef.value?.hide()
 }
+
+const tabsActive = ref('abc')
+
 onMounted(()=>{
 
   createMessage({message:'hello world1',duration:2000,showClose:true,})
@@ -155,6 +166,7 @@ onMounted(()=>{
   setTimeout(() => {
     trigger.value = 'click'
     openValue.value = ['title1','title2']
+    tabsActive.value = 'ccc'
   }, 2000);
 })
 
