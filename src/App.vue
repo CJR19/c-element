@@ -1,4 +1,12 @@
 <template>
+
+  <div style="width: 200px;">
+    <Input clearable show-password  v-model="inputVal" placeholder="aaa" type="password"></Input>
+    <Input clearable  v-model="inputVal" placeholder=""></Input>
+    <Input clearable disabled  v-model="inputVal" placeholder=""></Input>
+    <Input clearable readonly  v-model="inputVal" placeholder=""></Input>
+  </div>
+  <br>
   <Tabs v-model="tabsActive">
     <Tab name="1" label="label1" icon="fa-solid fa-user-secret"></Tab>
     <Tab name="2" label="label2" icon="fa-solid fa-user-secret"></Tab>
@@ -100,7 +108,6 @@
       </h3>
     </template>
   </Alert>
-
   <!-- <Message show-close :duration="0" >12312321</Message> -->
 </template>
 
@@ -115,6 +122,7 @@ import Tooltip from '@/components/Tooltip/Tooltip.vue'
 import Dropdown from '@/components/Dropdown/Dropdown'
 import Tabs from '@/components/Tabs/Tabs.vue'
 import Tab from '@/components/Tabs/Tab.vue'
+import Input from '@/components/Input/Input.vue'
 
 import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
@@ -144,6 +152,8 @@ const closeTooltip = () => {
 }
 
 const tabsActive = ref('abc')
+
+const inputVal = ref()
 
 onMounted(()=>{
 
