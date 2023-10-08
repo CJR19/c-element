@@ -1,5 +1,7 @@
 <template>
-
+  <Switch v-model="swtichVal" active-value="right" inactive-value="wrong"></Switch>
+  <br>
+  <Switch v-model="swtichVal" active-value="right" inactive-value="wrong" active-text="ON" inactive-text="OFF" ></Switch>
   <div style="width: 200px;">
     <Input clearable show-password  v-model="inputVal" placeholder="aaa" type="password"></Input>
     <Input clearable  v-model="inputVal" placeholder=""></Input>
@@ -123,6 +125,7 @@ import Dropdown from '@/components/Dropdown/Dropdown'
 import Tabs from '@/components/Tabs/Tabs.vue'
 import Tab from '@/components/Tabs/Tab.vue'
 import Input from '@/components/Input/Input.vue'
+import Switch from '@/components/Switch/Switch.vue';
 
 import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
@@ -154,6 +157,8 @@ const closeTooltip = () => {
 const tabsActive = ref('abc')
 
 const inputVal = ref()
+
+const swtichVal = ref('right')
 
 onMounted(()=>{
 

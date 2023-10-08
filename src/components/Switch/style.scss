@@ -1,0 +1,81 @@
+.c-switch {
+  --c-switch-on-color: var(--c-color-primary);
+  --c-switch-off-color: var(--c-border-color);
+  --c-switch-on-border-color: var(--c-color-primary);
+  --c-switch-off-border-color: var(--c-border-color);
+}
+
+.c-switch {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  height: 32px;
+  .c-switch__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    &:focus-visible {
+      & ~ .c-switch__core {
+        outline: 2px solid var(--c-switch-on-color);
+        outline-offset: 1px;
+      }
+    }
+  }
+  &.is-checked {
+    .c-switch__core {
+      border-color:var(--c-switch-on-border-color);
+      background-color: var(--c-switch-on-color);
+      .c-switch__core-action {
+        left: calc(100% - 17px);
+      }
+      .c-switch__core-inner {
+        padding: 0 18px 0 4px;
+      }
+    }
+  }
+}
+
+.c-switch__core {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: 20px;
+  min-width: 40px;
+  border: 1px solid var(--c-switch-off-border-color);
+  outline: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: var(--c-switch-off-color);
+  cursor: pointer;
+  transition: border-color var(--c-transition-duration),background-color var(--c-transition-duration);
+  .c-switch__core-action {
+    position: absolute;
+    left: 1px;
+    border-radius: var(--c-border-radius-circle);
+    width: 16px;
+    height: 16px;
+    background-color: var(--c-color-white);
+    transition: all var(--c-transition-duration);
+  }
+  .c-switch__core-inner {
+    width: 100%;
+    transition: all var(--c-transition-duration);
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding:  0 4px 0 18px;
+    .c-switch__core-inner-text {
+      font-size: 12px;
+      color: var(--c-color-white);
+      user-select: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
