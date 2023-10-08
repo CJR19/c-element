@@ -1,4 +1,6 @@
 <template>
+  <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2"></cSelect>
+  <br>
   <Switch v-model="swtichVal" active-value="right" inactive-value="wrong"></Switch>
   <br>
   <Switch v-model="swtichVal" active-value="right" inactive-value="wrong" active-text="ON" inactive-text="OFF" ></Switch>
@@ -126,6 +128,7 @@ import Tabs from '@/components/Tabs/Tabs.vue'
 import Tab from '@/components/Tabs/Tab.vue'
 import Input from '@/components/Input/Input.vue'
 import Switch from '@/components/Switch/Switch.vue';
+import cSelect from '@/components/Select/Select.vue';
 
 import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
@@ -159,6 +162,14 @@ const tabsActive = ref('abc')
 const inputVal = ref()
 
 const swtichVal = ref('right')
+
+const SelectVal = ref('')
+const options2 = [
+  { label: 'hello', value: 1 },
+  { label: 'xyz', value: 2 },
+  { label: 'testing', value: 3 },
+  { label: 'check', value: 4 }
+]
 
 onMounted(()=>{
 
