@@ -1,5 +1,7 @@
 <template>
   <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2"></cSelect>
+  <p>可清除</p>
+  <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2" clearable></cSelect>
   <br>
   <Switch v-model="swtichVal" active-value="right" inactive-value="wrong"></Switch>
   <br>
@@ -167,7 +169,7 @@ const SelectVal = ref('2')
 const options2 = [
   { label: 'hello', value: '1' },
   { label: 'xyz', value: '2' },
-  { label: 'testing', value: '3' },
+  { label: 'testing', value: '3',disabled: true },
   { label: 'check', value: '4' }
 ]
 

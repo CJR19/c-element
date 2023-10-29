@@ -3,6 +3,8 @@
     class="c-select"
     :class="{'is-disabled': disabled }"
     @click="toggleDropdown"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <Tooltip
       placement="bottom-start"
@@ -19,7 +21,8 @@
         readonly
       >
         <template #suffix>
-          <Icon icon="angle-down" class="header-angle" :class="{'is-active': isDropdownShow}"/>
+          <Icon icon="circle-xmark" v-if="showClearIcon" class="c-input__clear" @click.stop="onClear"/>
+          <Icon icon="angle-down" v-else class="header-angle" :class="{'is-active': isDropdownShow}"/>
         </template>
       </Input>
       <template #content>
@@ -44,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,reactive } from 'vue'
+import { ref,reactive,computed } from 'vue'
 import type { Ref } from 'vue'
 import type { SelectProps, SelectEmits, SelectOption, SelectState } from './types'
 import Tooltip from '../Tooltip/Tooltip.vue'
@@ -65,7 +68,8 @@ const tooltipRef = ref() as Ref<TooltipInstance>
 const inputRef = ref() as Ref<InputInstance>
 const states = reactive<SelectState>({
   inputValue: initialOption ? initialOption.label : '',
-  selectedOption: initialOption ? initialOption : null
+  selectedOption: initialOption ? initialOption : null,
+  mouseHover: false
 })
 const isDropdownShow = ref(false)
 
@@ -102,6 +106,28 @@ const controlDropdown = (show: boolean) => {
   isDropdownShow.value = show
   emits('visible-change', show)
 }
+
+const showClearIcon = computed(() => {
+  return props.clearable 
+    && states.mouseHover
+    && states.selectedOption
+    && states.inputValue.trim() !== ''
+})
+const onClear = () => {
+  states.selectedOption = null
+  states.inputValue = ''
+  emits('clear')
+  emits('change', '')
+  emits('update:modelValue', '')
+}
+const handleMouseEnter = () => {
+  states.mouseHover = true;
+}
+
+const handleMouseLeave = () => {
+  states.mouseHover = false;
+}
+
 const toggleDropdown = () => {
   if (props.disabled) return
   if (isDropdownShow.value) {

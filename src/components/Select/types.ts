@@ -9,15 +9,18 @@ export interface SelectProps {
   options: SelectOption[];
   placeholder?: string;
   disabled?: boolean;
+  clearable?: boolean;
 }
 
 export interface SelectState {
   inputValue: string;
   selectedOption: SelectOption | null;
+  mouseHover: boolean;
 }
 
 export interface SelectEmits {
   (e:'change', value: string) : void;
   (e:'update:modelValue', value: string) : void;
   (e: 'visible-change', value:boolean): void;
+  (e: 'clear'): void;
 }
