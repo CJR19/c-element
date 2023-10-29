@@ -72,7 +72,7 @@
     
     .fade-enter-active,
     .fade-leave-active {
-        transition: opacity var(--c-transition-duration);
+        transition: opacity var(--c-transition-duration-fast);
     }
     
     .fade-enter-from,

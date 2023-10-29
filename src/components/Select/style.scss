@@ -1,0 +1,75 @@
+.c-select {
+    --c-select-item-hover-bg-color: var(--c-fill-color-light);
+    --c-select-item-font-size: var(--c-font-size-base);
+    --c-select-item-font-color: var(--c-text-color-regular);
+    --c-select-item-selected-font-color: var(--c-color-primary);
+    --c-select-item-disabled-font-color: var(--c-text-color-placeholder);
+    --c-select-input-focus-border-color: var(--c-color-primary);
+}
+
+.c-select {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+
+    .c-tooltip .c-tooltip__popper {
+        padding: 0;
+    }
+
+    .c-input.is-focus .c-input__wrapper {
+        box-shadow: 0 0 0 1px var(--c-select-input-focus-border-color) inset!important
+    }
+
+    .c-input {
+        .header-angle {
+            transition: transform var(--c-transition-duration-fast);
+            &.is-active {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .c-input__inner {
+        cursor: pointer;
+    }
+
+    .c-select__menu {
+        list-style: none;
+        margin: 6px 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .c-select__menu-item {
+        margin: 0;
+        font-size: var(--c-select-item-font-size);
+        padding: 0 32px 0 20px;
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--c-select-item-font-color);
+        height: 34px;
+        line-height: 34px;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--c-select-item-hover-bg-color);
+        }
+
+        &.is-selected {
+            color: var(--c-select-item-selected-font-color);
+            font-weight: 700;
+        }
+
+        &.is-disabled {
+            color: var(--c-select-item-disabled-font-color);
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}

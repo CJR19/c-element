@@ -163,12 +163,12 @@ const inputVal = ref()
 
 const swtichVal = ref('right')
 
-const SelectVal = ref('')
+const SelectVal = ref('2')
 const options2 = [
-  { label: 'hello', value: 1 },
-  { label: 'xyz', value: 2 },
-  { label: 'testing', value: 3 },
-  { label: 'check', value: 4 }
+  { label: 'hello', value: '1' },
+  { label: 'xyz', value: '2' },
+  { label: 'testing', value: '3' },
+  { label: 'check', value: '4' }
 ]
 
 onMounted(()=>{

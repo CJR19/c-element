@@ -115,6 +115,9 @@ useClickOutside(container,()=>{
     if (props.trigger === 'click' && isOpen.value && !props.manual) {
         closeFinal()
     }
+    if (isOpen.value) {
+        emits('click-ouside',true)
+    }
 })
 
 const attachEvents = () => {
