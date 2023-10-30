@@ -37,7 +37,7 @@
               :id="`select-item-${item.value}`"
               @click.stop="itemSelect(item)"
             >
-              {{item.label}}
+              <RenderVnode :vNode="renderLabel?renderLabel(item):item.label" />
             </li>
           </template>
         </ul>
@@ -52,6 +52,7 @@ import type { Ref } from 'vue'
 import type { SelectProps, SelectEmits, SelectOption, SelectState } from './types'
 import Tooltip from '../Tooltip/Tooltip.vue'
 import type { TooltipInstance } from '../Tooltip/types'
+import RenderVnode from '../Common/RenderVnode'
 import Input from '../Input/Input.vue'
 import Icon from '../Icon/Icon.vue'
 import type { InputInstance } from '../Input/types'

@@ -2,6 +2,8 @@
   <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2"></cSelect>
   <p>可清除</p>
   <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2" clearable></cSelect>
+  <p>自定义模板</p>
+  <cSelect v-model="SelectVal" :render-label="customRender" placeholder="基础选择器" :options="options2" clearable></cSelect>
   <br>
   <Switch v-model="swtichVal" active-value="right" inactive-value="wrong"></Switch>
   <br>
@@ -172,6 +174,12 @@ const options2 = [
   { label: 'testing', value: '3',disabled: true },
   { label: 'check', value: '4' }
 ]
+const customRender = (option:any) => {
+  return h('div',{ className: 'customStyle' },[
+    h('b',{},option.label),
+    h('span',{},option.value)
+  ])
+}
 
 onMounted(()=>{
 
@@ -201,8 +209,14 @@ onMounted(()=>{
 </script>
 
 
-<style scoped>
+<style>
 .c-alert {
   margin-top: 10px;
+}
+.customStyle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 </style>
