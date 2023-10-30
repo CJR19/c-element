@@ -4,6 +4,8 @@
   <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2" clearable></cSelect>
   <p>自定义模板</p>
   <cSelect v-model="SelectVal" :render-label="customRender" placeholder="基础选择器" :options="options2" clearable></cSelect>
+  <p>可筛选</p>
+  <cSelect v-model="SelectVal" filterable placeholder="基础选择器" :options="options2" clearable></cSelect>
   <br>
   <Switch v-model="swtichVal" active-value="right" inactive-value="wrong"></Switch>
   <br>

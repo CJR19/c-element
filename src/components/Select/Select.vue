@@ -16,9 +16,10 @@
       <Input 
         v-model="states.inputValue"
         :disabled="disabled"
-        :placeholder="placeholder"
+        :placeholder="filteredPlaceHolder"
         ref="inputRef"
-        readonly
+        :readonly="!filterable || !isDropdownShow"
+        @input="onFilter"
       >
         <template #suffix>
           <Icon icon="circle-xmark" v-if="showClearIcon" class="c-input__clear" @click.stop="onClear"/>
@@ -27,7 +28,7 @@
       </Input>
       <template #content>
         <ul class="c-select__menu">
-          <template v-for="(item, index) in options" :key="index">
+          <template v-for="(item, index) in filterOptions" :key="index">
             <li 
               class="c-select__menu-item"
               :class="{
@@ -47,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,reactive,computed } from 'vue'
+import { ref,reactive,computed,watch } from 'vue'
 import type { Ref } from 'vue'
 import type { SelectProps, SelectEmits, SelectOption, SelectState } from './types'
 import Tooltip from '../Tooltip/Tooltip.vue'
@@ -97,12 +98,36 @@ const popperOptions : any = {
     
   ]
 }
-
+const filterOptions = ref(props.options)
+watch(() => props.options, (val) => {
+  filterOptions.value = val
+})
+const generateFilterOption = (searchValue: string) => {
+  if (!props.filterable) return
+  if (props.filterMethod && typeof props.filterMethod === 'function') {
+    filterOptions.value = props.filterMethod(searchValue)
+  } else {
+    filterOptions.value = props.options.filter((item:SelectOption) => item.label.includes(searchValue))
+  }
+}
+const onFilter = () => {
+  generateFilterOption(states.inputValue)
+}
+const filteredPlaceHolder = computed(() => {
+  return (props.filterable && states.selectedOption && isDropdownShow.value) 
+  ? states.selectedOption.label : props.placeholder
+})
 const controlDropdown = (show: boolean) => {
   if (show) {
+    if (props.filterable && states.selectedOption) {
+      states.inputValue = ''
+    }
     tooltipRef.value.show()
   } else {
     tooltipRef.value.hide()
+    if (props.filterable) {
+      states.inputValue = states.selectedOption? states.selectedOption.label : ''
+    }
   }
   isDropdownShow.value = show
   emits('visible-change', show)

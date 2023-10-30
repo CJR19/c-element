@@ -1,5 +1,7 @@
 import type { VNode } from 'vue'
 
+export type RenderLabelFunc = (option: SelectOption)=> VNode;
+export type CunstomFilterFunc = (val: string) => SelectOption[];
 export interface SelectOption {
   label: string;
   value: string | number;
@@ -13,6 +15,8 @@ export interface SelectProps {
   disabled?: boolean;
   clearable?: boolean;
   renderLabel?: RenderLabelFunc;
+  filterable?: boolean;
+  filterMethod?: CunstomFilterFunc;
 }
 
 export interface SelectState {
@@ -21,7 +25,6 @@ export interface SelectState {
   mouseHover: boolean;
 }
 
-export type RenderLabelFunc = (option: SelectOption)=> VNode;
 
 export interface SelectEmits {
   (e:'change', value: string) : void;
