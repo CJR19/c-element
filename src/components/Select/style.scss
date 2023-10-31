@@ -71,6 +71,10 @@
             font-weight: 700;
         }
 
+        &.is-highlight {
+            background-color: var(--c-select-item-hover-bg-color);  
+        }
+
         &.is-disabled {
             color: var(--c-select-item-disabled-font-color);
             cursor: not-allowed;

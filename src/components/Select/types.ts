@@ -28,6 +28,7 @@ export interface SelectState {
   selectedOption: SelectOption | null;
   mouseHover: boolean;
   loading: boolean;
+  highlightIndex: number;
 }
 
 

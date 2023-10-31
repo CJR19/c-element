@@ -20,6 +20,7 @@
         ref="inputRef"
         :readonly="!filterable || !isDropdownShow"
         @input="debounceOnFilter"
+        @keydown="handleKeydown"
       >
         <template #suffix>
           <Icon icon="circle-xmark" v-if="showClearIcon" class="c-input__clear" @click.stop="onClear"/>
@@ -39,7 +40,8 @@
               class="c-select__menu-item"
               :class="{
                 'is-disabled': item.disabled ,
-                'is-selected': item.value === states.selectedOption?.value
+                'is-selected': item.value === states.selectedOption?.value,
+                'is-highlight': index === states.highlightIndex
               }"
               :id="`select-item-${item.value}`"
               @click.stop="itemSelect(item)"
@@ -81,7 +83,8 @@ const states = reactive<SelectState>({
   inputValue: initialOption ? initialOption.label : '',
   selectedOption: initialOption ? initialOption : null,
   mouseHover: false,
-  loading: false
+  loading: false,
+  highlightIndex: -1
 })
 const isDropdownShow = ref(false)
 const timeout = computed(() =>{
@@ -150,6 +153,51 @@ const filteredPlaceHolder = computed(() => {
   return (props.filterable && states.selectedOption && isDropdownShow.value) 
   ? states.selectedOption.label : props.placeholder
 })
+
+
+const handleKeydown = (e:KeyboardEvent) => {
+  switch(e.key) {
+    case 'Enter':
+      if (!isDropdownShow.value) {
+        controlDropdown(true)
+      } else {
+        if (states.highlightIndex > -1 && filterOptions.value[states.highlightIndex]) {
+          itemSelect(filterOptions.value[states.highlightIndex])
+        } else {
+          controlDropdown(false)
+        }
+      }
+      break
+    case 'Escape':
+      if (isDropdownShow.value) {
+        controlDropdown(false)
+      }
+      break
+    case 'ArrowUp':
+      e.preventDefault()
+      if (filterOptions.value.length > 0) {
+        if (states.highlightIndex === -1 || states.highlightIndex === 0) {
+          states.highlightIndex = filterOptions.value.length - 1
+        } else { 
+          states.highlightIndex--      
+        }
+      }
+      break
+    case 'ArrowDown':
+      e.preventDefault()
+      if (filterOptions.value.length > 0) {
+        if (states.highlightIndex === -1 || states.highlightIndex === (filterOptions.value.length -1)) {
+          states.highlightIndex = 0
+        } else { 
+          states.highlightIndex++      
+        }
+      }
+      break
+    default:
+      break;
+  }
+}
+
 const controlDropdown = (show: boolean) => {
   if (show) {
     if (props.filterable && states.selectedOption) {
@@ -161,6 +209,7 @@ const controlDropdown = (show: boolean) => {
     if (props.filterable) {
       states.inputValue = states.selectedOption? states.selectedOption.label : ''
     }
+    states.highlightIndex = -1
   }
   isDropdownShow.value = show
   emits('visible-change', show)
