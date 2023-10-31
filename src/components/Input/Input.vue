@@ -100,7 +100,8 @@ defineOptions({ name: 'CInput', inheritAttrs: false })
 
 const props = withDefaults(defineProps<InputProps>(),{
     type: 'text',
-    autocomplete: 'off'
+    autocomplete: 'off',
+    modelValue: ''
 })
 const emits = defineEmits<InputEmits>()
 const attrs = useAttrs()
