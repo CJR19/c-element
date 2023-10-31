@@ -29,6 +29,14 @@
         }
     }
 
+    .c-select__nodata, .c-select__loading {
+        padding: 10px 0;
+        margin: 0;
+        text-align: center;
+        color: var(--c-text-color-secondary);
+        font-size: var(--c-select-font-size);
+      }
+
     .c-input__inner {
         cursor: pointer;
     }

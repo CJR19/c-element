@@ -6,6 +6,8 @@
   <cSelect v-model="SelectVal" :render-label="customRender" placeholder="基础选择器" :options="options2" clearable></cSelect>
   <p>可筛选</p>
   <cSelect v-model="SelectVal" filterable placeholder="基础选择器" :options="options2" clearable></cSelect>
+  <p>远程搜索</p>
+  <cSelect v-model="SelectVal" filterable remote :remote-method="remoteFilter" placeholder="基础选择器" ></cSelect>
   <br>
   <Switch v-model="swtichVal" active-value="right" inactive-value="wrong"></Switch>
   <br>
@@ -142,6 +144,7 @@ import type { TooltipInstance } from './components/Tooltip/types';
 import type { size } from './components/Icon/types';
 import type { Options } from '@popperjs/core';
 import type { MenuOption } from './components/Dropdown/types';
+import type { SelectOption } from './components/Select/types';
 
 
 const ButtonRef = ref<ButtonInstance | null>(null)
@@ -181,6 +184,83 @@ const customRender = (option:any) => {
     h('b',{},option.label),
     h('span',{},option.value)
   ])
+}
+const states = [
+  'Alabama',
+  'Alaska',
+  'Arizona',
+  'Arkansas',
+  'California',
+  'Colorado',
+  'Connecticut',
+  'Delaware',
+  'Florida',
+  'Georgia',
+  'Hawaii',
+  'Idaho',
+  'Illinois',
+  'Indiana',
+  'Iowa',
+  'Kansas',
+  'Kentucky',
+  'Louisiana',
+  'Maine',
+  'Maryland',
+  'Massachusetts',
+  'Michigan',
+  'Minnesota',
+  'Mississippi',
+  'Missouri',
+  'Montana',
+  'Nebraska',
+  'Nevada',
+  'New Hampshire',
+  'New Jersey',
+  'New Mexico',
+  'New York',
+  'North Carolina',
+  'North Dakota',
+  'Ohio',
+  'Oklahoma',
+  'Oregon',
+  'Pennsylvania',
+  'Rhode Island',
+  'South Carolina',
+  'South Dakota',
+  'Tennessee',
+  'Texas',
+  'Utah',
+  'Vermont',
+  'Virginia',
+  'Washington',
+  'West Virginia',
+  'Wisconsin',
+  'Wyoming',
+]
+
+const remoteFilter = (query:string):Promise<SelectOption[]> => {
+  return new Promise((resolve) => {
+    if (query) {
+      setTimeout(() => {
+        const options = states.filter((item) => {
+          return item.toLowerCase().includes(query.toLowerCase())
+        }).map(label => {
+          return { label, value: label }
+        })
+        resolve(options)
+      }, 500)
+    } else {
+      resolve([])
+    }
+  })
+}
+const handleFetch = (query:string) => {
+  if (!query) return Promise.resolve([])
+  return fetch(`https://api.github.com/search/repositories?q=${query}`)
+  .then(res => res.json())
+  .then(( { items }) => {
+    return items.slice(0, 10).map((item:any) => ({ label: item.name, value: item.node_id }))
+  })
 }
 
 onMounted(()=>{
