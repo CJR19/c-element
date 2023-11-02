@@ -76,7 +76,10 @@ const props = withDefaults(defineProps<SelectProps>(),{
   options: () => []
 }) 
 const emits = defineEmits<SelectEmits>()
-const initialOption = findOption(props.modelValue)
+let initialOption = findOption(props.modelValue)
+watch(()=> props.modelValue,()=>{
+  initialOption = findOption(props.modelValue)
+})
 const tooltipRef = ref() as Ref<TooltipInstance>
 const inputRef = ref() as Ref<InputInstance>
 const states = reactive<SelectState>({
@@ -90,6 +93,8 @@ const isDropdownShow = ref(false)
 const timeout = computed(() =>{
   return props.remote ? 300 : 0
 })
+
+
 
 const popperOptions : any = {
   modifiers: [
