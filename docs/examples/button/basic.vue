@@ -31,9 +31,3 @@ import Button from "@/components/Button/Button.vue"
 
 </script>
 
-<style scoped> 
-.a {
-    text-emphasis: none;
-}
-</style>
-

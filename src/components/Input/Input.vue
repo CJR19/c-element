@@ -92,9 +92,10 @@
 
 <script lang="ts" setup>
 import type { InputProps,InputEmits } from './types';
-import { ref,watch, computed, useAttrs,nextTick} from 'vue'
+import { ref,watch, computed, useAttrs,nextTick, inject} from 'vue'
 import type { Ref } from 'vue'
 import Icon from '../Icon/Icon.vue' 
+import { FormItemContextKey } from '../Form/types';
 
 defineOptions({ name: 'CInput', inheritAttrs: false })
 
@@ -109,6 +110,11 @@ const innerValue = ref(props.modelValue)
 const isFoucus = ref(false)
 const passwordVisible = ref(false)
 const inputRef = ref() as Ref<HTMLInputElement | HTMLTextAreaElement>
+const formItemContext = inject(FormItemContextKey)
+const runValidation = (trigger?:string) => {
+    formItemContext?.validate(trigger)
+}
+
 const NOOP = () => {}
 const keepFocus = async () => {
   await nextTick()
@@ -137,10 +143,12 @@ const togglePasswordVisible = () => {
 const handleInput = ()=> {
     emits('update:modelValue',innerValue.value)
     emits('input',innerValue.value)
+    runValidation('input')
 }
 
 const handleChange = () => {
     emits('change',innerValue.value)
+    runValidation('change')
 }
 
 const handleFocus = (e:FocusEvent)=> {
@@ -150,6 +158,7 @@ const handleFocus = (e:FocusEvent)=> {
 const handleBlur = (e:FocusEvent)=> {
     isFoucus.value = false
     emits('blur',e)
+    runValidation('blur')
 }
 const clear = ()=> {
     innerValue.value = ''

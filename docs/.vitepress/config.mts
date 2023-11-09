@@ -40,7 +40,8 @@ export default defineConfig({
       {
         text: 'components',
         items: [
-          { text: 'Button', link: '/pages/vue-components/button' }
+          { text: 'Button', link: '/pages/vue-components/button' },
+          { text: 'Form', link: '/pages/vue-components/form' },
         ]
       },
       {

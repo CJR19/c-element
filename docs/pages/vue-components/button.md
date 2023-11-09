@@ -12,7 +12,7 @@ description: Button 组件的文档
 
 
 :::demo basic demo
-button/basic
+Button/Basic
 :::
 
 
