@@ -4,7 +4,8 @@
         :class="{
             'is-error': validateStatus.state === 'error',
             'is-success': validateStatus.state === 'success',
-            'is-loading': validateStatus.loading
+            'is-loading': validateStatus.loading,
+            'is-required': isRequired
         }"
     >
         <label class="c-form-item__label">
@@ -18,12 +19,11 @@
                 {{ validateStatus.errorMessage }}
             </div>
         </div>
-        {{ innerValue }}-{{ itemRules }}
     </div>
 </template>
 
 <script setup lang="ts">
-import type { FormItemProps,FormValidateFailure,FormItemContext} from './types'
+import type { FormItemProps,FormValidateFailure,FormItemContext,ValidateStatusProp,FormItemInstance} from './types'
 import { inject, computed, reactive,provide,onMounted,onUnmounted } from 'vue'
 import { FormKey,FormItemContextKey } from './types';
 import Schema from 'async-validator'
@@ -31,12 +31,12 @@ defineOptions({ name: 'CFormItem' })
 const props = defineProps<FormItemProps>()
 
 const formContext = inject(FormKey)
-const validateStatus = reactive({
+const validateStatus:ValidateStatusProp = reactive({
     state: 'init',
     errorMessage: '',
     loading: false,
 })
-let initialValue:string | null = null
+let initialValue:any = null
 const innerValue = computed(() => {
     const model = formContext?.model
     const prop = props.prop
@@ -68,6 +68,15 @@ const getTriggeredRules = (trigger?: string) => {
         return []
     }
 }
+
+const isRequired = computed(() => {
+    const rules = itemRules.value
+    if (rules) {
+        return rules.some((rule) => rule.required)
+    } else {
+        return false
+    }
+})
 
 const validate = async (trigger?:string) => {
     const modelName = props.prop
@@ -122,5 +131,12 @@ onMounted(()=>{
 })
 onUnmounted(()=>{
     formContext?.removeField(context)
+})
+
+defineExpose<FormItemInstance>({
+    validateStatus,
+    validate,
+    resetField,
+    clearValidate
 })
 </script>

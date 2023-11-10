@@ -1,7 +1,6 @@
 <template>
     <form class="c-form">
         <slot></slot>
-        <button @click.prevent="validate">validate All</button>
     </form>
 </template>
 

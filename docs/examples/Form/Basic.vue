@@ -9,20 +9,14 @@
             </template>
             <c-input v-model="model.password" placeholder="Password" />
         </c-form-item>
-        <c-form-item label="test" prop="test">
-            <template #default="{ validate }">
-                <input type="text" v-model="model.test" @blur="()=>validate()"/>
-            </template>
+        <c-form-item label="confirmPass" prop="confirmPass">
+            <c-input v-model="model.confirmPass" placeholder="confirmPass" />
         </c-form-item>
         <div>
             <c-button type="primary" @click.prevent="submit">Submit</c-button>
             <c-button @click.prevent="reset">Reset</c-button>
             <c-button @click.prevent="clear">Clear</c-button>
         </div>    
-        <p>
-            form:value
-            <pre>{{ model }}</pre>
-        </p>
     </c-form>
 </template>
     
@@ -38,6 +32,7 @@ const formRef = ref()
 const model = reactive({
     username: '',
     password: '',
+    confirmPass: '',
     test: ''
 })
 const rules:FormRules = {
@@ -46,7 +41,17 @@ const rules:FormRules = {
     ],
     password: [
         { required: true, message: 'Please input password',type: 'string', trigger: 'blur' },
-        { min: 6, max: 12, message: 'Length should be 6 to 12', type: 'string', trigger: 'input'}
+        { min: 6, max: 12, message: 'Length should be 6 to 12', type: 'string', trigger: 'blur'}
+    ],
+    confirmPass: [
+        { required: true, message: 'Please input confirmPass',type: 'string', trigger: 'blur' },
+        { validator: (rule, value, callback) => {
+            if (value !== model.password) {
+                callback(new Error('confirmPass should be equal to password'))
+            } else {
+                callback()
+            }
+        }, trigger: 'blur' }
     ],
     test: [
         { required: true, message: 'Please input test',type: 'string', trigger: 'blur' }
