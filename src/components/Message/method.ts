@@ -55,3 +55,9 @@ export const getLastBottomOffset = (id:string) => {
         return preInstance.vm.exposed!.bottomOffset.value
     }
 }
+
+export const closeAll = () => {
+    instances.forEach(instance => {
+        instance.destory()
+      })
+}
