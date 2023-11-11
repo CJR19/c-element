@@ -3,16 +3,12 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    vueJsx(),
-    dts({
-      tsconfigPath: resolve(__dirname, './tsconfig.build.json'),
-    })
+    vueJsx()
   ],
   css: {
     preprocessorOptions: {
@@ -28,23 +24,21 @@ export default defineConfig({
   },
   // 打包配置
   build: {
+    outDir: 'dist/umd',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'CElement',
-      fileName: 'c-element'
+      fileName: 'c-element',
+      formats: ['umd']
     },
     rollupOptions: {
       external: [
-        'vue', 
-        '@fortawesome/fontawesome-svg-core',
-        '@fortawesome/free-solid-svg-icons',
-        '@fortawesome/vue-fontawesome'
+        'vue'
       ],
       output: {
         exports: 'named',        
         globals: { 
-          vue: 'Vue',
-          '@fortawesome/fontawesome-svg-core': 'fontawesome',
+          vue: 'Vue'
         },
         assetFileNames: (chunkInfo) => {
           if (chunkInfo.name === 'style.css') {

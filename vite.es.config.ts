@@ -12,6 +12,7 @@ export default defineConfig({
     vueJsx(),
     dts({
       tsconfigPath: resolve(__dirname, './tsconfig.build.json'),
+      outDir: 'dist/types'
     })
   ],
   css: {
@@ -28,24 +29,24 @@ export default defineConfig({
   },
   // 打包配置
   build: {
+    outDir: 'dist/es',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'CElement',
-      fileName: 'c-element'
+      fileName: 'c-element',
+      formats: ['es']
     },
     rollupOptions: {
       external: [
-        'vue', 
+        'vue',
         '@fortawesome/fontawesome-svg-core',
         '@fortawesome/free-solid-svg-icons',
-        '@fortawesome/vue-fontawesome'
+        '@fortawesome/vue-fontawesome',
+        'async-validator',
+        '@popperjs/core',
+        'axios',
       ],
-      output: {
-        exports: 'named',        
-        globals: { 
-          vue: 'Vue',
-          '@fortawesome/fontawesome-svg-core': 'fontawesome',
-        },
+      output: {      
         assetFileNames: (chunkInfo) => {
           if (chunkInfo.name === 'style.css') {
             return 'index.css'

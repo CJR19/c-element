@@ -1,0 +1,13 @@
+{
+    "files": [],
+    "include": ["src/index.ts", "src/components/**/*", "src/hooks/**/*"],
+    "references": [
+      {
+        "path": "./tsconfig.node.json"
+      },
+      {
+        "path": "./tsconfig.app.json"
+      }
+    ]
+  }
+  
