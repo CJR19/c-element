@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     dts({
-      tsconfigPath: resolve(__dirname, './tsconfig.build.json'),
+      tsconfigPath:'./tsconfig.build.json',
       outDir: 'dist/types'
     })
   ],
