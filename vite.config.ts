@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     dts({
-      tsconfigPath: resolve(__dirname, './tsconfig.build.json'),
+      tsconfigPath: './tsconfig.build.json',
     })
   ],
   css: {
@@ -43,8 +43,7 @@ export default defineConfig({
       output: {
         exports: 'named',        
         globals: { 
-          vue: 'Vue',
-          '@fortawesome/fontawesome-svg-core': 'fontawesome',
+          vue: 'Vue'
         },
         assetFileNames: (chunkInfo) => {
           if (chunkInfo.name === 'style.css') {

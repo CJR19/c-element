@@ -17,8 +17,8 @@
       "types": "./dist/types/index.d.ts"
     },
     "./dist/": {
-      "import": "./dist/es/c-element.js",
-      "require": "./dist/umd/c-element.umd.cjs"
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
   "scripts": {
