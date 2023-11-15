@@ -1,3 +1,10 @@
+import type { App } from "vue"
+declare module './Button.vue' {
+    interface Button {
+      install: (app: App) => void;
+    }
+}
+
 export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 export type ButtonSize = 'large' | 'small' 
 export type NativeType = 'button' | 'submit' | 'reset'

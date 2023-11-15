@@ -1,4 +1,14 @@
-import type { Ref,InjectionKey } from "vue"
+import type { Ref,InjectionKey,App } from "vue"
+declare module './Collapse.vue' {
+    interface Collapse {
+      install: (app: App) => void;
+    }
+}
+declare module './CollapseItem.vue' {
+    interface CollapseItem {
+      install: (app: App) => void;
+    }
+}
 export type NameType = string | number
 
 export interface CollapseProps {

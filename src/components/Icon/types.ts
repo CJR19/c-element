@@ -1,5 +1,10 @@
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-
+import type { App } from 'vue';
+declare module './Icon.vue' {
+    interface Icon {
+        install: (app: App) => void;
+    }
+}
 export type size = '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x'
 
 export interface IconProps {

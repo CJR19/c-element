@@ -1,5 +1,10 @@
 import type { VNode } from 'vue'
-
+import type { App } from 'vue';
+declare module './Select.vue' {
+    interface Select {
+        install: (app: App) => void;
+    }
+}
 export type RenderLabelFunc = (option: SelectOption)=> VNode;
 export type CunstomFilterFunc = (val: string) => SelectOption[];
 export type CunstomFilterRemoteFunc = (val: string) => Promise<SelectOption[]>;

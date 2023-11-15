@@ -1,4 +1,9 @@
-
+import type { App } from 'vue';
+declare module './Input.vue' {
+    interface Input {
+        install: (app: App) => void;
+    }
+}
 
 
 export interface InputProps {

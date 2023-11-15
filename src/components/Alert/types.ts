@@ -1,4 +1,11 @@
 
+import type { App } from "vue"
+declare module './Alert.vue' {
+    interface Alert {
+      install: (app: App) => void;
+    }
+}
+
 export interface AlertProps {
     /**
      * 标题

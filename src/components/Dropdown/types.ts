@@ -1,5 +1,11 @@
-import type { VNode } from "vue";
+import type { VNode,App } from "vue";
 import type { TooltipProps } from "../Tooltip/types";
+
+declare module './Dropdown.vue' {
+    interface Dropdown {
+        install: (app: App) => void;
+    }
+}
 
 export interface DropdownProps extends TooltipProps {
     menuOptions: MenuOption[];

@@ -1,4 +1,66 @@
 <template>
+
+
+
+  <Tabs v-model="tabsActive">
+    <Tab name="1" label="Template">
+      Template
+    </Tab>
+    <Tab name="2" label="Script">
+      Script
+    </Tab>
+    <Tab name="3" label="Style">
+      Style
+    </Tab>
+    <Tab name="4" label="All">
+      All
+    </Tab>
+  </Tabs>
+
+  <TabPanels v-model="tabsActive">
+    <TabPanel name="1">
+      <div style="background-color: aqua;">
+        <h1>Template</h1>
+        <p>
+          tttt
+        </p>
+      </div>
+    </TabPanel>
+    <TabPanel name="2">
+      <div style="background-color: pink;">
+        <h1>Script</h1>
+        <p>
+          ssss
+        </p>
+      </div>
+    </TabPanel>
+    <TabPanel name="3">
+      <div style="background-color: red;">
+        <h1>Style</h1>
+        <p>
+          aaaa
+        </p>
+      </div>
+    </TabPanel>
+    <TabPanel name="4">
+      <div style="background-color: chartreuse;">
+        <h1>All</h1>
+        <p>
+          bbb
+        </p>
+      </div>
+    </TabPanel>
+  </TabPanels>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
   <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2"></cSelect>
   <p>可清除</p>
   <cSelect v-model="SelectVal" placeholder="基础选择器" :options="options2" clearable></cSelect>
@@ -19,11 +81,7 @@
     <Input clearable readonly  v-model="inputVal" placeholder=""></Input>
   </div>
   <br>
-  <Tabs v-model="tabsActive">
-    <Tab name="1" label="label1" icon="fa-solid fa-user-secret"></Tab>
-    <Tab name="2" label="label2" icon="fa-solid fa-user-secret"></Tab>
-    <Tab name="3" label="label3" icon="fa-solid fa-user-secret"></Tab>
-  </Tabs>
+
   <Icon icon="fa-solid fa-user-secret"  :size="iconSize" />
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="primary"/>
   <Icon icon="fa-solid fa-user-secret"  size="5x" type="success"/>
@@ -137,6 +195,8 @@ import Tab from '@/components/Tabs/Tab.vue'
 import Input from '@/components/Input/Input.vue'
 import Switch from '@/components/Switch/Switch.vue';
 import cSelect from '@/components/Select/Select.vue';
+import TabPanels from '@/components/TabPanels/TabPanels.vue'
+import TabPanel from '@/components/TabPanels/TabPanel.vue'
 
 import { createMessage } from './components/Message/method';
 import type { ButtonInstance } from './components/Button/types';
@@ -166,7 +226,7 @@ const closeTooltip = () => {
   TooltipRef.value?.hide()
 }
 
-const tabsActive = ref('abc')
+const tabsActive = ref('1')
 
 const inputVal = ref()
 
@@ -284,7 +344,7 @@ onMounted(()=>{
   setTimeout(() => {
     trigger.value = 'click'
     openValue.value = ['title1','title2']
-    tabsActive.value = 'ccc'
+
   }, 2000);
 })
 

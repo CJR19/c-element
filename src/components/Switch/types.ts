@@ -1,5 +1,10 @@
 export type SwitchValueType = boolean | string | number;
-
+import type { App } from 'vue';
+declare module './Switch.vue' {
+    interface Switch {
+        install: (app: App) => void;
+    }
+}
 export interface SwitchProps {
   modelValue: SwitchValueType;
   disabled?: boolean;

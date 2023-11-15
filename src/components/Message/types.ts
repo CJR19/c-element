@@ -1,4 +1,10 @@
 import type { VNode,ComponentInternalInstance } from "vue";
+import type { App } from 'vue';
+declare module './Message.vue' {
+    interface Message {
+        install: (app: App) => void;
+    }
+}
 export interface MessageProps {
     message?: string | VNode;
     duration?: number;
