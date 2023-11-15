@@ -14,6 +14,6 @@ description: Form 组件的文档
 
 在每一个 form 组件中，你需要一个 form-item 字段作为输入项的容器，用于获取值与验证值。
 
-:::demo basic demo
+:::demo description="basic example" github="https://github.com/CJR19/c-element/tree/main/src/components/Form"
 Form/Basic
 :::

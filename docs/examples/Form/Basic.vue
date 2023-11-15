@@ -21,10 +21,6 @@
 </template>
     
 <script setup lang='ts'>
-import CForm from '@/components/Form/Form.vue'
-import CFormItem from '@/components/Form/FormItem.vue'
-import CInput from '@/components/Input/Input.vue'
-import CButton from '@/components/Button/Button.vue'
 import { reactive,ref } from 'vue'
 import { FormRules } from '@/components/Form/types'
 

@@ -18,9 +18,18 @@ const demoContainer = (md: MarkdownIt) => {
     render(tokens: Token[], idx: number) {
 
       const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
-
+      console.log(m)
       if (tokens[idx].nesting === 1 /* means the tag is opening */) {
-        const description = m && m.length > 1 ? m[1] : ''
+
+        const descriptionRegex = /description="([^"]*)"/;
+        const githubRegex = /github="([^"]*)"/;
+
+        const descriptionMatch = m && m[1].match(descriptionRegex);
+        const githubMatch = m && m[1].match(githubRegex);
+
+        const description = descriptionMatch ? descriptionMatch[1] : '';
+        const github = githubMatch ? githubMatch[1] : '';
+
         const sourceFileToken = tokens[idx + 2]
         let source = ''
         const sourceFile = sourceFileToken.children?.[0].content ?? ''
@@ -38,6 +47,7 @@ const demoContainer = (md: MarkdownIt) => {
               path="${sourceFile}" 
               raw-source="${encodeURIComponent(source)}" 
               description="${encodeURIComponent(description)}"
+              github="${encodeURIComponent(github)}"
             >`
         return comp
       } else {

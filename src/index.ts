@@ -10,6 +10,8 @@ import Select from "./components/Select";
 import Switch from "./components/Switch";
 import Tab, {Tabs} from "./components/Tabs";
 import Tooltip from "./components/Tooltip";
+import TabPanels, {TabPanel} from "./components/TabPanels";
+
 
 import type { App } from "vue";
 
@@ -18,7 +20,12 @@ import './styles/index.scss'
 // fontawesome 图标库
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons' // 品牌图标
+import { far } from '@fortawesome/free-regular-svg-icons' // 空心图标
+
 library.add(fas)
+library.add(fab)
+library.add(far)
 
 const components = [
     Button,
@@ -35,7 +42,9 @@ const components = [
     Switch,
     Tab,
     Tabs,
-    Tooltip
+    Tooltip,
+    TabPanels,
+    TabPanel
 
 ]    
 
@@ -62,6 +71,8 @@ export {
     Tab,
     Tabs,
     Tooltip,
+    TabPanels,
+    TabPanel,
     createMessage,
     closeMessageAll
 }

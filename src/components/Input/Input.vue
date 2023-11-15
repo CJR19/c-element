@@ -110,7 +110,12 @@ const innerValue = ref(props.modelValue)
 const isFoucus = ref(false)
 const passwordVisible = ref(false)
 const inputRef = ref() as Ref<HTMLInputElement | HTMLTextAreaElement>
-const formItemContext = inject(FormItemContextKey)
+const formItemContext = inject(FormItemContextKey, {
+  validate: async () => {},
+  prop: '',
+  resetField: () => {},
+  clearValidate: () => {}
+})
 const runValidation = (trigger?:string) => {
     formItemContext?.validate(trigger)
 }

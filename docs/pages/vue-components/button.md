@@ -11,7 +11,7 @@ description: Button 组件的文档
 
 
 
-:::demo basic demo
+:::demo description="Basic Example" github="https://github.com/CJR19/c-element/tree/main/src/components/Button"
 Button/Basic
 :::
 

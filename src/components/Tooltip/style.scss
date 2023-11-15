@@ -1,19 +1,20 @@
 .c-tooltip {
-    --c-popover-bg-color: var(--c-bg-color-overlay);
+    --c-popover-bg-color: var(--c-bg-color-black);
     --c-popover-font-size: var(--c-font-size-base);
     --c-popover-border-color: var(--c-border-color);
-    --c-popover-padding: 12px;
+    --c-popover-padding: 5px;
     --c-popover-border-radius: 4px;
     display: inline-block;
 }
 
 .c-tooltip {
     .c-tooltip__popper {
+        color: #fff;
         background: var(--c-popover-bg-color);
         border-radius: var(--c-popover-border-radius);
         border: 1px solid var(--c-popover-border-color);
         padding: var(--c-popover-padding);
-        color: var(--c-text-color-regular);
+        color: var(--c-text-color-disabled);
         line-height: 1.4;
         text-align: justify;
         font-size: var(--c-popover-font-size);
