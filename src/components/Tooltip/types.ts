@@ -1,5 +1,10 @@
 import type { Placement, Options } from '@popperjs/core'
-
+import type { App } from 'vue';
+declare module './Tooltip.vue' {
+    interface Tooltip {
+        install: (app: App) => void;
+    }
+}
 export interface TooltipProps {
     content?: string,
     trigger?:'hover' | 'click',

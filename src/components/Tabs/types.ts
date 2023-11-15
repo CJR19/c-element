@@ -1,5 +1,15 @@
 import type { InjectionKey,Ref } from 'vue' 
-
+import type { App } from 'vue';
+declare module './Tab.vue' {
+    interface Tab {
+        install: (app: App) => void;
+    }
+}
+declare module './Tabs.vue' {
+    interface Tabs {
+        install: (app: App) => void;
+    }
+}
 export type NameType = string | number
 
 export interface TabsProps {
