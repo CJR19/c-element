@@ -4,7 +4,8 @@ $colors : (
         success:#67c23a,
         warning:#e6a23c,
         info:#909399,
-        danger:#f56c6c
+        danger:#f56c6c,
+        secondary: #26a69a,
     );
 
 :root {
@@ -26,7 +27,7 @@ $colors : (
         --c-color-#{$type}: #{$color};
         @for $level from 3 through 9 {
             @if $level % 2 == 1 {
-                --c-color-#{$type}-light-#{$level}: #{mix(#fff,$color, $level*10%)};      
+                --c-color-#{$type}-light-#{$level}: #{mix(#fff,$color, $level*8%)};      
             }
         }
         --c-color-#{$type}-light-8:#{mix(#fff, $color, 80%)};
@@ -57,7 +58,7 @@ $colors : (
     --c-fill-color-lighter: #fafafa;
     --c-fill-color-extra-light: #fafcff;
     --c-fill-color-dark: #ebedf0;
-    --c-fill-color-darker: #e6e8eb;
+    --c-fill-color-darker: #e6e8eb;         
     --c-fill-color-blank: #ffffff;
   
     /* border */
