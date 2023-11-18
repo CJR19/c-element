@@ -1,27 +1,26 @@
 ---
-title: CSS Spacing Classes
-desc: The list of CSS classes supplied by Quasar to simplify the specification of responsive paddings and margins.
-related:
-  - /style/typography
-  - /style/positioning
-  - /style/visibility
-  - /style/breakpoints
+title: CSS间距类
+desc: c-element提供的CSS类列表，用于简化响应式填充和边距的规范。
+
 ---
 
-## Syntax
+# CSS间距类
+CElement提供了CSS类来帮助您为DOM元素或组件提供间距。 所有选项都以c-为前缀，然后细分为类型（T），方向（D）和大小（S）。 有关所有可能的排列，请参见下表。
+
+## 语法
 ```js
 c-[p|m][t|r|b|l|a|x|y]-[none|auto|xs|sm|md|lg|xl]
     T       D                   S
 
-T - type
+T - type 类型
   - values: p (padding), m (margin)
 
-D - direction
+D - direction 方向
   - values:
       t (top), r (right), b (bottom), l (left),
       a (all), x (both left & right), y (both top & bottom)
 
-S - size
+S - size 大小
   - values:
       none,
       auto (ONLY for specific margins: c-ml-*, c-mr-*, c-mx-*),
@@ -35,11 +34,13 @@ S - size
 ## Examples
 
 ```html
-<!-- small padding in all directions -->
+<!-- 所有方向小的padding -->
 <div class="c-pa-sm">...</div>
+<!-- 顶部中margin, 右边小margin -->
+<div class="c-mt-md c-mr-sm">...</div>
 
 ```
-## Table of permutations
+## 排序表
 
 | Prefix | Type | Direction | Size | Example |
 |--------|------|-----------|------|---------
@@ -136,7 +137,7 @@ S - size
 
 
 
-## Other Related
+## 其他相关
 | Class Name | Description |
 | --- | --- |
 | `no-margin` | Removes any applied margins |

@@ -157,6 +157,10 @@ onMounted(() => {
   border-radius: 0 !important;
 }
 
+.demo-wrapper {
+  margin: 20px 0;
+}
+
 .c-card {
   width: 100%;
   border: 1px solid #e0e0e0;
@@ -214,6 +218,25 @@ onMounted(() => {
 
   &__content {
     padding: 10px;
+    max-height: 500px;
+    overflow-y: scroll;
+            /* 调整滚动条样式 */
+        &::-webkit-scrollbar {
+            width: 8px; /* 设置滚动条宽度 */
+        }
+    
+        &::-webkit-scrollbar-track {
+            background-color: #f1f1f1; /* 设置滚动条背景颜色 */
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: #888; /* 设置滚动条滑块颜色 */
+            border-radius: 4px; /* 设置滚动条滑块圆角 */
+        }
+    
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* 设置滚动条滑块悬停时的颜色 */
+        }
   }
 }
 

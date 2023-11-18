@@ -68,23 +68,31 @@ $spaces: (
   }
 }
 
-.q-mt-auto, .q-my-auto {
+.c-mt-auto, .c-my-auto {
   margin-top: auto;
 }
 
-.q-ml-auto {
+.c-ml-auto {
   margin-left: auto;
 }
 
-.q-mb-auto, .q-my-auto {
+.c-mb-auto, .c-my-auto {
   margin-bottom: auto;
 }
 
-.q-mr-auto {
+.c-mr-auto {
   margin-right: auto;
 }
 
-.q-mx-auto {
+.c-mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
 }

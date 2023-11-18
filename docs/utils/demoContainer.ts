@@ -18,7 +18,7 @@ const demoContainer = (md: MarkdownIt) => {
     render(tokens: Token[], idx: number) {
 
       const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
-      console.log(m)
+
       if (tokens[idx].nesting === 1 /* means the tag is opening */) {
 
         const descriptionRegex = /description="([^"]*)"/;

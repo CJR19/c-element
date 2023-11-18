@@ -1,6 +1,5 @@
 <template>
     <div class="c-py-sm">
-        <c-button type="primary">123213</c-button>
         <c-button>hello</c-button>
         <c-button plain>plain</c-button>
         <c-button round>round</c-button>
