@@ -18,7 +18,7 @@ description: Button 组件的文档
  `shadow-transition` | 在阴影上应用默认的CSS转换效果 |
 
 
-:::demo description="Standard shadows" github="https://github.com/CJR19/c-element/tree/main/src/styles/shadows"
+:::demo description="Standard shadows" github="https://github.com/CJR19/c-element/tree/main/src/styles/shadows.scss"
 Style/ShadowsStandard
 :::
 
@@ -29,10 +29,10 @@ Style/ShadowsStandard
  `shadow-up-1` | 设置1的深度 |
  `shadow-up-2` | 设置2的深度 |
  `shadow-up-N` | 其中N是1到24的整数 |
-:::demo description="Standard pointing up" github="https://github.com/CJR19/c-element/tree/main/src/styles/shadows"
+:::demo description="Standard pointing up" github="https://github.com/CJR19/c-element/tree/main/src/styles/shadows.scss"
 Style/ShadowsPointingUp
 :::
 
-:::demo description="Inset Standard" github="https://github.com/CJR19/c-element/tree/main/src/styles/shadows"
+:::demo description="Inset Standard" github="https://github.com/CJR19/c-element/tree/main/src/styles/shadows.scss"
 Style/ShadowsInset
 :::
