@@ -4,13 +4,22 @@ import  demoContainer  from '../utils/demoContainer'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "CJr Blog",
+  description: "CJr Blog",
   vite: {
     resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('../../src', import.meta.url))
-      }
+      alias: [
+        {
+          find: '@',
+          replacement: fileURLToPath(new URL('../../src', import.meta.url))
+        },
+        {
+          find: /^.*\/VPHero1\.vue$/,
+          replacement: fileURLToPath(
+            new URL('../components/Custom.vue', import.meta.url)
+          )
+        }
+      ]
     }
   },
   markdown: {
@@ -25,13 +34,17 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '组件', link: '/markdown-examples' }
     ],
     sidebar: [
       {
         text: 'Examples',
+        collapsed: true,
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' }
@@ -39,17 +52,24 @@ export default defineConfig({
       },
       {
         text: 'components',
+        collapsed: true,
         items: [
-          { text: 'Button', link: '/pages/vue-components/button' },
-          { text: 'Form', link: '/pages/vue-components/form' },
+          { text: 'Button 按钮', link: '/pages/vue-components/button' },
+          { text: 'Alert 提示', link: '/pages/vue-components/alert' },
+          { text: 'Collapse 折叠面板', link: '/pages/vue-components/collapse' },
+          { text: 'Form 表单', link: '/pages/vue-components/form' },
         ]
       },
       {
         text: 'Style',
+        collapsed: true,
         items: [
-          { text: 'spacing', link: '/pages/style/spacing' }
+          { text: 'spacing', link: '/pages/style/spacing' },
+          { text: 'color', link: '/pages/style/color' },
+          { text: 'shadows', link: '/pages/style/shadows' },
         ]
       },
+      {text: 'Style',},
     ],
 
     socialLinks: [
