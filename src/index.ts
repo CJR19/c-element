@@ -12,7 +12,7 @@ import Tab, {Tabs} from "./components/Tabs";
 import Tooltip from "./components/Tooltip";
 import TabPanels, {TabPanel} from "./components/TabPanels";
 import RenderVnode from './components/Common/RenderVnode'
-
+import { celementKey } from "./utils/private/symbols";
 
 import type { App } from "vue";
 
@@ -54,6 +54,12 @@ const install = function (app: App) {
     components.forEach(component => {
         app.component(component.name, component);
     });
+    const $c = {
+        createMessage,
+        closeMessageAll
+    }
+    app.config.globalProperties.$c = $c
+    app.provide(celementKey,$c)
 }
 
 export {
