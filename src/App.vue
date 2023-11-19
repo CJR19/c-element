@@ -1,7 +1,11 @@
 <template>
 
-
-
+  <CDropdown :menu-options="menuOptions" content="你好" placement="top" trigger="hover"  >
+    <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
+  </CDropdown>
+  <CDropdown placement="bottom" :menu-options="menuOptions">
+      <c-button type="primary"> Hover 下拉菜s单 </c-button>
+  </CDropdown>
   <Tabs v-model="tabsActive">
     <Tab name="1" label="Template">
       Template
@@ -97,9 +101,7 @@
     <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
   </Tooltip>
 
-  <Dropdown :menu-options="menuOptions" content="你好" placement="top" trigger="hover"  >
-    <Icon icon="fa-solid fa-user-secret"  size="5x" color="pink"/>
-  </Dropdown>
+
 
   <Tooltip content="你好" :popper-options="options" placement="top" trigger="click" manual ref="TooltipRef">
     <template #content>
@@ -189,7 +191,7 @@ import Collapse from './components/Collapse/Collapse.vue';
 import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from '@/components/Tooltip/Tooltip.vue'
-import Dropdown from '@/components/Dropdown/Dropdown'
+import Dropdown from '@/components/Dropdown/Dropdown.vue'
 import Tabs from '@/components/Tabs/Tabs.vue'
 import Tab from '@/components/Tabs/Tab.vue'
 import Input from '@/components/Input/Input.vue'

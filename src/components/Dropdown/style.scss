@@ -9,11 +9,14 @@
     .c-tooltip {
       --c-popover-padding: 5px 0;
     }
+    .c-tooltip .c-tooltip__popper {
+      --c-popover-bg-color: #fff;
+    }
   }
   .c-dropdown__menu {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     .c-dropdown__item {
       display: flex;
       align-items: center;
@@ -41,3 +44,4 @@
       border-top: 1px solid var(--c-dropdown-menuItem-divided-color);
     }
   }
+

@@ -2,7 +2,7 @@ import Button from "./components/Button";
 import Collapse, { CollapseItem } from "./components/Collapse";
 import Message, { createMessage,closeAll as closeMessageAll } from "./components/Message";
 import Alert from "./components/Alert";
-import Dropdown from "./components/Dropdown/Dropdown";
+import Dropdown from "./components/Dropdown/Dropdown.vue";
 import Form, { FormItem } from "./components/Form";
 import Icon from "./components/Icon";
 import Input from "./components/Input";
@@ -11,6 +11,7 @@ import Switch from "./components/Switch";
 import Tab, {Tabs} from "./components/Tabs";
 import Tooltip from "./components/Tooltip";
 import TabPanels, {TabPanel} from "./components/TabPanels";
+import RenderVnode from './components/Common/RenderVnode'
 
 
 import type { App } from "vue";
@@ -44,7 +45,8 @@ const components = [
     Tabs,
     Tooltip,
     TabPanels,
-    TabPanel
+    TabPanel,
+    RenderVnode
 
 ]    
 
@@ -74,7 +76,8 @@ export {
     TabPanels,
     TabPanel,
     createMessage,
-    closeMessageAll
+    closeMessageAll,
+    RenderVnode
 }
 
 export default {
