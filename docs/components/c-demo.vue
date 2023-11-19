@@ -219,7 +219,7 @@ onMounted(() => {
   &__content {
     padding: 10px;
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
             /* 调整滚动条样式 */
         &::-webkit-scrollbar {
             width: 8px; /* 设置滚动条宽度 */
