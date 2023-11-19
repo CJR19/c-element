@@ -20,7 +20,8 @@
             />
             <div class="c-alert__content">
                 <span class="c-alert__title">
-                        {{ title }}
+                    {{ title }}
+                    <slot />
                 </span>
                 <p class="c-alert__description" v-if="description || $slots.description">
                     {{ description }}
