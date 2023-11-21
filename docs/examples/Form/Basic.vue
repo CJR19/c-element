@@ -1,71 +1,45 @@
-<template>
-    <c-form :model="model" :rules="rules" ref="formRef">
-        <c-form-item label="Username" prop="username">
-            <c-input v-model="model.username" placeholder="Username" />
-        </c-form-item>
-        <c-form-item label="Password" prop="password">
-            <template #label="{ label }">
-                <c-button>{{ label }}</c-button>
-            </template>
-            <c-input v-model="model.password" placeholder="Password" />
-        </c-form-item>
-        <c-form-item label="confirmPass" prop="confirmPass">
-            <c-input v-model="model.confirmPass" placeholder="confirmPass" />
-        </c-form-item>
-        <div>
-            <c-button type="primary" @click.prevent="submit">Submit</c-button>
-            <c-button @click.prevent="reset">Reset</c-button>
-            <c-button @click.prevent="clear">Clear</c-button>
-        </div>    
-    </c-form>
-</template>
-    
-<script setup lang='ts'>
-import { reactive,ref } from 'vue'
-import { FormRules } from '@/components/Form/types'
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+
+const model = reactive({
+    email: '',
+    password: '',
+    agreement: false,
+    zone: ''
+})
+
+const options = [
+    { label: 'zone 1', value: 'one' },
+    { label: 'zone 2', value: 'two' },
+    { label: 'zone 3', value: 'three' }
+]
 
 const formRef = ref()
-const model = reactive({
-    username: '',
-    password: '',
-    confirmPass: '',
-    test: ''
-})
-const rules:FormRules = {
-    username: [
-        { required: true, message: 'Please input username',type: 'string', trigger: 'blur' }
-    ],
-    password: [
-        { required: true, message: 'Please input password',type: 'string', trigger: 'blur' },
-        { min: 6, max: 12, message: 'Length should be 6 to 12', type: 'string', trigger: 'blur'}
-    ],
-    confirmPass: [
-        { required: true, message: 'Please input confirmPass',type: 'string', trigger: 'blur' },
-        { validator: (rule, value, callback) => {
-            if (value !== model.password) {
-                callback(new Error('confirmPass should be equal to password'))
-            } else {
-                callback()
-            }
-        }, trigger: 'blur' }
-    ],
-    test: [
-        { required: true, message: 'Please input test',type: 'string', trigger: 'blur' }
-    ]
-}
-
 const submit = async () => {
-    try {
-        await formRef.value.validate()
-        console.log('success')
-    } catch (e) {
-        console.log('error', e)
-    }
+    alert('submitted!')
 }
 const reset = () => {
     formRef.value.resetFields()
 }
-const clear = () => {
-    formRef.value.clearValidate()
-}
 </script>
+
+<template>
+    <Form :model="model" ref="formRef">
+        <c-form-item prop="email" label="the email">
+            <c-input v-model="model.email" />
+        </c-form-item>
+        <c-form-item prop="password" label="the password">
+            <c-input v-model="model.password" type="password" />
+        </c-form-item>
+        <c-form-item prop="agreement" label="agreement">
+            <c-switch v-model="model.agreement" />
+        </c-form-item>
+        <c-form-item prop="zone" label="zone">
+            <c-select v-model="model.zone" :options="options" />
+        </c-form-item>
+        <c-form-item>
+            <c-button @click.prevent="submit" type="primary">Submit</c-button>
+            <c-button @click.prevent="reset">Reset</c-button>
+        </c-form-item>
+    </Form>
+</template>
