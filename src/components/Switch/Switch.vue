@@ -2,8 +2,6 @@
   <div 
     class="c-switch"
     :class="{
-      [`c-switch--${size}`]: size,
-      'is-disabled': disabled,
       'is-checked': checked
     }"
     @click="switchValue"
@@ -17,7 +15,7 @@
       :disabled="disabled"
       @keydown.enter="switchValue"
     />
-    <div class="c-switch__core">
+    <div class="c-switch__core" :class="{'is-disabled': disabled,}">
       <div class="c-switch__core-inner">
         <span v-if="activeText || inactiveText" class="c-switch__core-inner-text">
           {{ checked?activeText:inactiveText }}

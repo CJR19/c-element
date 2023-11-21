@@ -14,7 +14,6 @@ export interface SwitchProps {
   inactiveValue?: SwitchValueType;
   name?: string;
   id?:string;
-  size?: 'small' | 'large';
 }
 
 export interface SwitchEmits {

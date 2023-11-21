@@ -36,6 +36,7 @@
       }
     }
   }
+
 }
 
 .c-switch__core {
@@ -51,6 +52,11 @@
   background: var(--c-switch-off-color);
   cursor: pointer;
   transition: border-color var(--c-transition-duration),background-color var(--c-transition-duration);
+  &.is-disabled {
+    &:hover {
+      cursor: not-allowed !important;
+    }
+  }
   .c-switch__core-action {
     position: absolute;
     left: 1px;
