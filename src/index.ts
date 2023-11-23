@@ -11,6 +11,12 @@ import Switch from "./components/Switch";
 import Tab, {Tabs} from "./components/Tabs";
 import Tooltip from "./components/Tooltip";
 import TabPanels, {TabPanel} from "./components/TabPanels";
+
+import createLoading ,{removeLoading } from "./components/Loading";
+
+// derective
+import { vLoading } from "./components/Loading/directive";
+
 import RenderVnode from './components/Common/RenderVnode'
 import { celementKey } from "./utils/private/symbols";
 
@@ -56,10 +62,13 @@ const install = function (app: App) {
     });
     const $c = {
         createMessage,
-        closeMessageAll
+        closeMessageAll,
+        createLoading,
+        removeLoading
     }
     app.config.globalProperties.$c = $c
     app.provide(celementKey,$c)
+    app.directive('loading',vLoading)
 }
 
 export {
@@ -83,6 +92,8 @@ export {
     TabPanel,
     createMessage,
     closeMessageAll,
+    createLoading,
+    removeLoading,
     RenderVnode
 }
 

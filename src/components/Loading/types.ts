@@ -1,7 +1,10 @@
 
 export interface LoadingProps {
-    message?: string
+    message?: string,
+    fullscreen?: boolean,
+    lock?: boolean,
+    transitionName?: string,
     close: ()=>void
 }
 
-export type CreateMessageProps = Omit<LoadingProps, 'close'>
+export type CreateLoadingProps = Omit<LoadingProps, 'close'>

@@ -1,10 +1,11 @@
 import { render, h } from "vue";
 import LoadingInstance from "./Loading.vue";
-import type { CreateMessageProps } from "./types";
+import type { CreateLoadingProps } from "./types";
 
 let seed = 1;
+const instances :any[]= [];
 export const createLoading = (
-  props?: CreateMessageProps,
+  props: CreateLoadingProps ={lock: true},
   el: any = document.body
 ) => {
   const id = `_c_loading_${seed++}`;
@@ -12,13 +13,23 @@ export const createLoading = (
 
   const close = () => {
     el.removeAttribute("loading_child_id");
+    el.classList.remove('c-loading-parent--hidden')
+    const index = instances.findIndex((item) => item.id === id);
+
     render(null, container);
+    if (index !== -1) {
+      instances.splice(index, 1);
+    }
   };
   const newProps = {
     ...props,
     id,
     close,
+    fullscreen: el === document.body? true: false,
   };
+  if (props?.lock) {
+    el.classList.add('c-loading-parent--hidden')
+  }
   el.setAttribute('loading_child_id', id);
   const vnode = h(LoadingInstance, newProps);
   render(vnode, container);
@@ -31,14 +42,14 @@ export const createLoading = (
     close,
   };
 
+  instances.push(instance);
+
   return instance;
 };
 
 export const removeLoading = (el: any) => {
   const id = el.getAttribute("loading_child_id");
-  const loadingElement = document.getElementById(id);
-  if (loadingElement) {
-    loadingElement.remove();
-  }
+  if (!id) return
+  instances.find((item) => item.id === id)?.close();
 }
 
