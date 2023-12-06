@@ -43,33 +43,70 @@ export default defineConfig({
     ],
     sidebar: [
       {
+        text: '前端知识',
+        collapsed: false,
+        items: [
+          { 
+            text: 'JavaScript', 
+            collapsed: false,
+            items: [
+              {text: 'this指向', link: '/pages/front-end/javascript/this指向'},
+              {text: 'Promise' , link: '/pages/front-end/javascript/Promise'},
+              {text: '防抖' , link: '/pages/front-end/javascript/防抖'},
+              {text: '节流' , link: '/pages/front-end/javascript/节流'},
+            ]
+          },
+          { text: 'CSS', link: '/pages/front-end/css' },
+          { text: 'HTML', link: '/pages/front-end/html' },
+          { text: 'TypeScript', link: '/pages/front-end/ts' },
+          { 
+            text: 'Vue',
+            link: '/pages/front-end/vue',
+            items: [
+              {text: 'vuex', link: '/pages/front-end/vue/vuex/基础'},
+              {text: 'pinia' , link: '/pages/front-end/vue/pinia/基础'},
+            ]
+          }, 
+        ]
+      },
+      {
         text: 'Examples',
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' }
         ]
       },
       {
-        text: 'components',
-        collapsed: true,
+        text: '风格与样式',
+        collapsed: false,
+        items: [
+          { text: 'Color 颜色', link: '/pages/style/color' },
+          { text: 'Spacing 间距', link: '/pages/style/spacing' },
+          { text: 'Shadows 阴影', link: '/pages/style/shadows' },
+        ]
+      },
+      {
+        text: 'Vue 组件',
+        collapsed: false,
         items: [
           { text: 'Button 按钮', link: '/pages/vue-components/button' },
           { text: 'Alert 提示', link: '/pages/vue-components/alert' },
           { text: 'Collapse 折叠面板', link: '/pages/vue-components/collapse' },
+          { text: 'Dropdown 下拉菜单', link: '/pages/vue-components/dropdown' },
+          { text: 'Message 消息', link: '/pages/vue-components/message' },
+          { text: 'Input 文字输入', link: '/pages/vue-components/input' },
+          { text: 'Switch 开关', link: '/pages/vue-components/switch' },
+          { text: 'Select 选择器', link: '/pages/vue-components/select' },
           { text: 'Form 表单', link: '/pages/vue-components/form' },
+          { text: 'Loading 加载', link: '/pages/vue-components/loading' },
         ]
       },
       {
-        text: 'Style',
-        collapsed: true,
-        items: [
-          { text: 'spacing', link: '/pages/style/spacing' },
-          { text: 'color', link: '/pages/style/color' },
-          { text: 'shadows', link: '/pages/style/shadows' },
-        ]
+        text: 'Vue 指令'
       },
-      {text: 'Style',},
+
+
     ],
 
     socialLinks: [
