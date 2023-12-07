@@ -50,6 +50,7 @@ export default defineConfig({
             text: 'JavaScript', 
             collapsed: false,
             items: [
+              {text: '事件循环', link: '/pages/front-end/javascript/事件循环'},
               {text: 'this指向', link: '/pages/front-end/javascript/this指向'},
               {text: 'Promise' , link: '/pages/front-end/javascript/Promise'},
               {text: '防抖' , link: '/pages/front-end/javascript/防抖'},
