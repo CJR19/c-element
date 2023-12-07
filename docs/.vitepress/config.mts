@@ -47,6 +47,13 @@ export default defineConfig({
         collapsed: false,
         items: [
           { 
+            text: 'HTML&CSS', 
+            collapsed: false,
+            items: [
+              {text: '浏览器渲染原理', link: '/pages/front-end/html_css/浏览器渲染原理'},
+            ]
+          },
+          { 
             text: 'JavaScript', 
             collapsed: false,
             items: [
