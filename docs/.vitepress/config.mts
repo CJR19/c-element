@@ -43,6 +43,34 @@ export default defineConfig({
     ],
     sidebar: [
       {
+        text: '风格与样式',
+        collapsed: false,
+        items: [
+          { text: 'Color 颜色', link: '/pages/style/color' },
+          { text: 'Spacing 间距', link: '/pages/style/spacing' },
+          { text: 'Shadows 阴影', link: '/pages/style/shadows' },
+        ]
+      },
+      {
+        text: 'Vue 组件',
+        collapsed: false,
+        items: [
+          { text: 'Button 按钮', link: '/pages/vue-components/button' },
+          { text: 'Alert 提示', link: '/pages/vue-components/alert' },
+          { text: 'Collapse 折叠面板', link: '/pages/vue-components/collapse' },
+          { text: 'Dropdown 下拉菜单', link: '/pages/vue-components/dropdown' },
+          { text: 'Message 消息', link: '/pages/vue-components/message' },
+          { text: 'Input 文字输入', link: '/pages/vue-components/input' },
+          { text: 'Switch 开关', link: '/pages/vue-components/switch' },
+          { text: 'Select 选择器', link: '/pages/vue-components/select' },
+          { text: 'Form 表单', link: '/pages/vue-components/form' },
+          { text: 'Loading 加载', link: '/pages/vue-components/loading' },
+        ]
+      },
+      {
+        text: 'Vue 指令'
+      },
+      {
         text: '前端知识',
         collapsed: false,
         items: [
@@ -85,34 +113,7 @@ export default defineConfig({
           { text: 'Runtime API Examples', link: '/api-examples' }
         ]
       },
-      {
-        text: '风格与样式',
-        collapsed: false,
-        items: [
-          { text: 'Color 颜色', link: '/pages/style/color' },
-          { text: 'Spacing 间距', link: '/pages/style/spacing' },
-          { text: 'Shadows 阴影', link: '/pages/style/shadows' },
-        ]
-      },
-      {
-        text: 'Vue 组件',
-        collapsed: false,
-        items: [
-          { text: 'Button 按钮', link: '/pages/vue-components/button' },
-          { text: 'Alert 提示', link: '/pages/vue-components/alert' },
-          { text: 'Collapse 折叠面板', link: '/pages/vue-components/collapse' },
-          { text: 'Dropdown 下拉菜单', link: '/pages/vue-components/dropdown' },
-          { text: 'Message 消息', link: '/pages/vue-components/message' },
-          { text: 'Input 文字输入', link: '/pages/vue-components/input' },
-          { text: 'Switch 开关', link: '/pages/vue-components/switch' },
-          { text: 'Select 选择器', link: '/pages/vue-components/select' },
-          { text: 'Form 表单', link: '/pages/vue-components/form' },
-          { text: 'Loading 加载', link: '/pages/vue-components/loading' },
-        ]
-      },
-      {
-        text: 'Vue 指令'
-      },
+
 
 
     ],

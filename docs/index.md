@@ -3,13 +3,13 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "CJr's blog"
+  text: "记录与分享前端知识"
+  tagline: 专注前端领域
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get start
+      link: /pages/vue-components/button.html
     - theme: alt
       text: API Examples
       link: /api-examples
