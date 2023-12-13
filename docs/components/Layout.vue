@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, h, onMounted } from 'vue'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import * as pagesData from '../pages.data'
@@ -12,23 +12,41 @@ console.log(pagesData.data)
 const route = computed(() => {
   return theme.value.sidebar
 })
-
 console.log(route.value)
+
+const sidebar = (props:any)=> {
+  let level = props.level || 1
+  const list = props.route.map((item:any)=>{
+    let content:any
+    if (item.items && item.items.length > 0) {
+      content = h('div',[
+        h('h'+level,item.text),
+        h(sidebar,{route:item.items,level:level+1})
+      ])
+    }else {
+      content = h(`${level===1?'h1':'p'}`,[
+        item.text,
+        h('a',{href:item.link},item.link)
+      ])
+    }
+    return h('li',content) 
+  })
+  return h('ul',
+  {
+    style: {'padding-left': '15px'}
+  }
+  ,list)
+}
+
 
 </script>
 
 <template>
   <Layout>
     <template #home-hero-before>
-        <div v-for="item in route">
-            <h2>{{ item.text }}</h2>
-            <ul>
-                <li v-for="item2 in item.items">
-                    <p>{{ item2.text }} <a :href="item2.link">{{ item2.link }}</a></p>                   
-                </li>
-            </ul>
-        </div>
+      <sidebar :route="route" />
     </template>
   </Layout>
   
 </template>
+

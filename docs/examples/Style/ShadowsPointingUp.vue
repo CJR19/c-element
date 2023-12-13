@@ -13,6 +13,8 @@
     padding-bottom: 20px;
     justify-content: center;
     gap: 50px;
+    background-color: #fff;
+
   }
   .shadow-box {
     width: 100px;
