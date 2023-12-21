@@ -44,8 +44,23 @@ const sidebar = (props:any)=> {
 <template>
   <Layout>
     <template #home-hero-before>
-      <sidebar :route="route" />
+      
     </template>
+<!-- 
+    VPHome源码 的插槽
+    <slot name="home-hero-before" />
+    <VPHomeHero>
+      <template #home-hero-info><slot name="home-hero-info" /></template>
+      <template #home-hero-image><slot name="home-hero-image" /></template>
+    </VPHomeHero>
+    <slot name="home-hero-after" />
+
+    <slot name="home-features-before" />
+    <VPHomeFeatures />
+    <slot name="home-features-after" />
+
+    <Content /> 
+-->
   </Layout>
   
 </template>
