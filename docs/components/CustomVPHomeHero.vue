@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { computed, h } from 'vue'
+import { computed, h, onMounted } from 'vue'
 import { useData } from 'vitepress'
 import * as pagesData from '../pages.data'
-// import { tsParticles } from "@tsparticles/engine";
+import { loadSlim } from "tsparticles-slim"; 
+
+import paticlesOptions from './particles.js'
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter, page, theme } = useData()
 
@@ -65,11 +67,14 @@ const data = [
   },
 ]
 
-function raf(callback) {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(callback)
-  })
-}
+const particlesInit = async engine => {
+    await loadSlim(engine);
+};
+
+const particlesLoaded = async container => {
+    console.log("Particles container loaded", container);
+};
+
 
 
 
@@ -77,8 +82,15 @@ function raf(callback) {
 <template>
   <!-- 自定义 VPHomeHero 组件 -->
   <!-- <sidebar :route="route" /> -->
+  <vue-particles
+    id="tsparticles"
+    :particlesInit="particlesInit"
+    :particlesLoaded="particlesLoaded"
+    :options="paticlesOptions"
+/>
   <div class="c-hero">
     <div class="c-hreo-menu">
+
 
     </div>
   </div>

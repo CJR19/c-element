@@ -13,12 +13,19 @@ export default defineConfig({
           find: '@',
           replacement: fileURLToPath(new URL('../../src', import.meta.url))
         },
+        // 覆盖vitepress默认的组件
         {
-          find: /^.*\/VPHero1\.vue$/,
+          find: /^.*\/VPHomeHero\.vue$/,
           replacement: fileURLToPath(
-            new URL('../components/Custom.vue', import.meta.url)
+            new URL('../components/CustomVPHomeHero.vue', import.meta.url)
           )
-        }
+        },
+        {
+          find: /^.*\/VPHomeFeatures\.vue$/,
+          replacement: fileURLToPath(
+            new URL('../components/CustomVPHomeFeatures.vue', import.meta.url)
+          )
+        },
       ]
     }
   },
@@ -97,9 +104,15 @@ export default defineConfig({
           { text: 'TypeScript', link: '/pages/front-end/ts' },
           { 
             text: 'Vue',
-            link: '/pages/front-end/vue',
+            collapsed: false,
             items: [
-              {text: 'vuex', link: '/pages/front-end/vue/vuex/基础'},
+              {
+                text: 'vuex',
+                collapsed: false,
+                items: [
+                  {text: '基础', link: '/pages/front-end/vue/vuex/基础'}
+                ]
+              },
               {text: 'pinia' , link: '/pages/front-end/vue/pinia/基础'},
             ]
           }, 
