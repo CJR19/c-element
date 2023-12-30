@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed, h, onMounted } from 'vue'
+import { computed, h, onMounted,ref,nextTick } from 'vue'
 import { useData } from 'vitepress'
 import * as pagesData from '../pages.data'
 import { loadSlim } from "tsparticles-slim"; 
-
 import paticlesOptions from './particles.js'
+import Ferris from './Ferris.vue';
+
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter, page, theme } = useData()
 
@@ -75,31 +76,57 @@ const particlesLoaded = async container => {
     console.log("Particles container loaded", container);
 };
 
+const ferrisRef = ref<any>(null)
 
+const move = async () => {
+    await nextTick()
+    ferrisRef.value.move()
+}
+const back = async () => {
+    await nextTick()
+    ferrisRef.value.back()
+}
 
 
 </script>
 <template>
   <!-- 自定义 VPHomeHero 组件 -->
   <!-- <sidebar :route="route" /> -->
+
+  <div class="c-hero">
+    <div class="c-hreo-menu">
+      <Ferris :data="data" ref="ferrisRef"/>
+    </div>
+    <c-button @click="move">move</c-button>
+
+  </div>
+  <!-- particles 背景 -->
   <vue-particles
     id="tsparticles"
     :particlesInit="particlesInit"
     :particlesLoaded="particlesLoaded"
     :options="paticlesOptions"
-/>
-  <div class="c-hero">
-    <div class="c-hreo-menu">
-
-
-    </div>
-  </div>
+  />
 </template>
 
 
 <style scoped lang="scss">
 
+.c-hero {
+  position: relative;
+  display: flex;
+  // background-color: rgba($color: #fff, $alpha: .3);
+  width: 100%;
+  height: 560px;
+  z-index: 1;
+  overflow: hidden;
 
+}
+
+.c-hreo-menu {
+  // width: 500px;
+  height: 100%;
+}
 
 </style>
 

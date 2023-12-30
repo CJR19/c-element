@@ -1,10 +1,11 @@
 <template>
     <div class="c-ferris" ref="ferrisRef">
         <div class="c-ferris--item" ref="ferrisItemRefs" v-for="(item, index) in ferris" :key="index" :style="{
-            left: `${item.x - 50}px`,
-            top: `${item.y - 50}px`,
+            left: `${item.x}px`,
+            top: `${item.y}px`,
 
             backgroundColor: item.color,
+            opacity: index === activeIndex ? 1 : 0.5,
             filter: `blur(${index === activeIndex ? 0 : 5}px)`,
             cursor: index === activeIndex ? 'pointer' : 'default',
 
@@ -12,26 +13,40 @@
         }">
             <p style="font-size: 25px;color: #fff; ">{{ index }}</p>
         </div>
-        <div class="c-ferris--center" ref="ferrisCenterRef" v-if="ferris && ferris.length" :style="{
-            backgroundColor: ferris[activeIndex].color,
-        }">1</div>
+        <div 
+            class="c-ferris--center" 
+            ref="ferrisCenterRef" 
+            v-if="ferris && ferris.length" 
+            :style="{
+                backgroundColor: ferris[activeIndex].color,
+            }"
+        >1</div>
     </div>
 </template>
     
 <script setup lang='ts'>
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { ref, onMounted, watch, nextTick, watchEffect } from 'vue'
 
 const props = defineProps({
     data: {
         type: Array,
         default: () => []
+    },
+    itemWidth: {
+        type: Number,
+        default: 100
+    },
+    itemHeight: {
+        type: Number,
+        default: 100
     }
 })
 
 const ferris = ref()
-const ferrisRef = ref()
+const ferrisRef = ref<HTMLElement>()
 const ferrisCenterRef = ref()
-const ferrisItemRefs = ref<any>([])
+const ferrisItemRefs = ref<HTMLElement[]>([])
+
 
 const activeTimes = ref(0)
 const activeIndex = ref(0)
@@ -44,11 +59,39 @@ watch(activeIndex, (newVal, oldVal) => {
     }
 })
 
+watchEffect(()=>{
+    if (ferrisRef.value) {
+        ferrisRef.value.style.setProperty('--item-width', `${props.itemWidth}px`)
+        ferrisRef.value.style.setProperty('--item-height', `${props.itemHeight}px`)
+        const parentDomCenter = {
+            x: ferrisRef.value!.clientWidth / 2,
+            y: ferrisRef.value!.clientHeight / 2
+        }
+        const positions = getPosition(parentDomCenter.x, parentDomCenter, props.data.length, 0)
+        const ferrisWidth = getComputedStyle(ferrisRef.value!).getPropertyValue("--item-width")
+        const ferrisHeight = getComputedStyle(ferrisRef.value!).getPropertyValue("--item-height")
+      
+        const offsetPosition = positions.map(item => {
+            return {
+                x: item.x - parseInt(ferrisWidth) / 2,
+                y: item.y - parseInt(ferrisHeight) / 2
+            }
+        })
+        ferris.value = props.data.map((item, index) => {
+            return {
+                ...(item as object),
+                ...offsetPosition[index]
+            }
+        })
+    }
+
+})
+
 const move = async () => {
     activeTimes.value++
     await nextTick()
     const angleStep = 360 / props.data.length;
-    ferrisRef.value.style.transform = `rotate(${angleStep * (activeTimes.value)}deg)`
+    ferrisRef.value!.style.transform = `rotate(${angleStep * (activeTimes.value)}deg)`
     ferrisCenterRef.value.style.transform = `rotate(${-angleStep * (activeTimes.value)}deg)`
     ferrisItemRefs.value.forEach((item: any, index: number) => {
         item.style.transform = `rotate(${-angleStep * (activeTimes.value)}deg)`
@@ -60,13 +103,19 @@ const back = async () => {
     activeTimes.value--
     await nextTick()
     const angleStep = 360 / props.data.length;
-    ferrisRef.value.style.transform = `rotate(${angleStep * (activeTimes.value)}deg)`
+    ferrisRef.value!.style.transform = `rotate(${angleStep * (activeTimes.value)}deg)`
     ferrisCenterRef.value.style.transform = `rotate(${-angleStep * (activeTimes.value)}deg)`
     ferrisItemRefs.value.forEach((item: any, index: number) => {
         item.style.transform = `rotate(${-angleStep * (activeTimes.value)}deg)`
     })
     activeIndex.value = activeIndex.value + 1
 }
+
+defineExpose({
+    move,
+    back
+})
+
 // 角度转为弧度
 function angleToRadian(angle: number) {
     return angle * Math.PI / 180
@@ -99,36 +148,31 @@ function getPosition(
 
     return positions
 }
+
+
 onMounted(() => {
-    const parentDomCenter = {
-        x: ferrisRef.value.clientWidth / 2,
-        y: ferrisRef.value.clientHeight / 2
-    }
-    console.log(parentDomCenter)
-    const positions = getPosition(parentDomCenter.x, parentDomCenter, props.data.length, 0)
-    ferris.value = props.data.map((item, index) => {
-        return {
-            ...(item as object),
-            ...positions[index]
-        }
-    })
-    console.log(positions)
+
 })
 
 
 </script>
     
 <style lang="scss" scoped>
+
 .c-ferris {
+    --item-width: 100px;
+    --item-height: 100px;
+    --item-left-offset: calc(var(--item-width) / -2);
+    --item-top-offset: calc(var(--item-height) / -2);
     height: 100%;
     aspect-ratio: 1;
     position: relative;
-    // background-color: #ccc;
+    background-color: #ccc;
     transition: all 0.8s;
 
     &--item {
-        width: 100px;
-        height: 100px;
+        width: var(--item-width);
+        height: var(--item-height);
         position: absolute;
         transition:
             transform 0.9s,
@@ -143,13 +187,13 @@ onMounted(() => {
     }
 
     &--center {
-        width: 100px;
-        height: 100px;
+        width: var(--item-width);
+        height: var(--item-height);
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-top: -50px;
-        margin-left: -50px;
+        margin-top: var(--item-top-offset);
+        margin-left: var(--item-left-offset);
         // background-color: #ccc;
 
         display: flex;
