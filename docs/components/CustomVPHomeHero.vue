@@ -5,7 +5,7 @@ import * as pagesData from '../pages.data'
 import { loadSlim } from "tsparticles-slim"; 
 import paticlesOptions from './particles.js'
 import Ferris from './Ferris.vue';
-
+import Pointer from './Pointer.vue';
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter, page, theme } = useData()
 
@@ -92,13 +92,13 @@ const back = async () => {
 <template>
   <!-- 自定义 VPHomeHero 组件 -->
   <!-- <sidebar :route="route" /> -->
+  <Pointer />
 
   <div class="c-hero">
     <div class="c-hreo-menu">
       <Ferris :data="data" ref="ferrisRef"/>
     </div>
-    <c-button @click="move">move</c-button>
-
+    <c-button @click="move">move</c-button>    
   </div>
   <!-- particles 背景 -->
   <vue-particles
@@ -111,16 +111,15 @@ const back = async () => {
 
 
 <style scoped lang="scss">
-
 .c-hero {
   position: relative;
   display: flex;
-  // background-color: rgba($color: #fff, $alpha: .3);
+  background-color: rgba($color: #fff, $alpha: .3);
   width: 100%;
   height: 560px;
-  z-index: 1;
   overflow: hidden;
-
+  z-index: 1;
+  // pointer-events: none;
 }
 
 .c-hreo-menu {
