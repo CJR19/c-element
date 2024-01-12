@@ -6,6 +6,9 @@ import { loadSlim } from "tsparticles-slim";
 import paticlesOptions from './particles.js'
 import Ferris from './Ferris.vue';
 import Pointer from './Pointer.vue';
+import Planet from './Planet.vue';
+import Typed from './Typed.vue';
+
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter, page, theme } = useData()
 
@@ -92,14 +95,21 @@ const back = async () => {
 <template>
   <!-- 自定义 VPHomeHero 组件 -->
   <!-- <sidebar :route="route" /> -->
-  <Pointer />
 
-  <div class="c-hero">
+  <!-- 自定义鼠标 -->
+  <Pointer />
+ <!-- 星球 -->
+  <Planet/>
+  <!-- 打字效果 -->
+  <Typed/>
+
+
+  <!-- <div class="c-hero">
     <div class="c-hreo-menu">
       <Ferris :data="data" ref="ferrisRef"/>
     </div>
     <c-button @click="move">move</c-button>    
-  </div>
+  </div> -->
   <!-- particles 背景 -->
   <vue-particles
     id="tsparticles"
@@ -107,6 +117,7 @@ const back = async () => {
     :particlesLoaded="particlesLoaded"
     :options="paticlesOptions"
   />
+
 </template>
 
 
@@ -127,6 +138,9 @@ const back = async () => {
   height: 100%;
 }
 
+.typing {
+  color: #fff;
+}
 </style>
 
 
