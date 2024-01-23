@@ -116,6 +116,19 @@ export default defineConfig({
               {text: 'pinia' , link: '/pages/front-end/vue/pinia/基础'},
             ]
           }, 
+          { 
+            text: 'Vue3',
+            collapsed: false,
+            items: [
+              {text: '简介' , link: '/pages/front-end/vue3/1-vue3简介'},
+              {text: '安装使用' , link: '/pages/front-end/vue3/2-创建vue3工程'},
+              {text: 'setup', link: '/pages/front-end/vue3/3-setup'},
+              {text: '响应式数据', link: '/pages/front-end/vue3/4-响应式数据'},
+              {text: '计算属性', link: '/pages/front-end/vue3/5-计算属性'},
+              {text: '侦听器', link: '/pages/front-end/vue3/6-侦听器'},
+              {text: '生命周期', link: '/pages/front-end/vue3/7-生命周期'},
+            ]
+          }, 
         ]
       },
       {
