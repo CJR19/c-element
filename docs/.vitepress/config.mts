@@ -51,7 +51,7 @@ export default defineConfig({
     sidebar: [
       {
         text: '风格与样式',
-        collapsed: false,
+        collapsed: true,
         items: [
           { text: 'Color 颜色', link: '/pages/style/color' },
           { text: 'Spacing 间距', link: '/pages/style/spacing' },
@@ -60,7 +60,7 @@ export default defineConfig({
       },
       {
         text: 'Vue 组件',
-        collapsed: false,
+        collapsed: true,
         items: [
           { text: 'Button 按钮', link: '/pages/vue-components/button' },
           { text: 'Alert 提示', link: '/pages/vue-components/alert' },
@@ -79,18 +79,18 @@ export default defineConfig({
       },
       {
         text: '前端知识',
-        collapsed: false,
+        collapsed: true,
         items: [
           { 
             text: 'HTML&CSS', 
-            collapsed: false,
+            collapsed: true,
             items: [
               {text: '浏览器渲染原理', link: '/pages/front-end/html_css/浏览器渲染原理'},
             ]
           },
           { 
             text: 'JavaScript', 
-            collapsed: false,
+            collapsed: true,
             items: [
               {text: '事件循环', link: '/pages/front-end/javascript/事件循环'},
               {text: 'this指向', link: '/pages/front-end/javascript/this指向'},
@@ -104,11 +104,11 @@ export default defineConfig({
           { text: 'TypeScript', link: '/pages/front-end/ts' },
           { 
             text: 'Vue',
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: 'vuex',
-                collapsed: false,
+                collapsed: true,
                 items: [
                   {text: '基础', link: '/pages/front-end/vue/vuex/基础'}
                 ]
@@ -118,7 +118,7 @@ export default defineConfig({
           }, 
           { 
             text: 'Vue3',
-            collapsed: false,
+            collapsed: true,
             items: [
               {text: '简介' , link: '/pages/front-end/vue3/1-vue3简介'},
               {text: '安装使用' , link: '/pages/front-end/vue3/2-创建vue3工程'},
@@ -127,13 +127,41 @@ export default defineConfig({
               {text: '计算属性', link: '/pages/front-end/vue3/5-计算属性'},
               {text: '侦听器', link: '/pages/front-end/vue3/6-侦听器'},
               {text: '生命周期', link: '/pages/front-end/vue3/7-生命周期'},
+              {
+                text: '组件', 
+                collapsed: true,
+                items: [
+                  {text: 'props', link: '/pages/front-end/vue3/8-1-props'},
+                  {text: 'emit', link: '/pages/front-end/vue3/8-2-emit'},
+                  {text: '组件 v-model', link: '/pages/front-end/vue3/8-3-组件v-model'},
+                  {text: '插槽Slots', link: '/pages/front-end/vue3/8-4-插槽Slots'},
+                  {text: '依赖注入', link: '/pages/front-end/vue3/8-5-依赖注入'},
+                ]
+              },
+              {text: '自定义hook', link: '/pages/front-end/vue3/9-自定义hook'},
+              {
+                text: '路由',
+                collapsed: true,
+                items: [
+                  {text: '介绍', link: '/pages/front-end/vue3/10-0-路由v-router'},
+                  {text: '基本使用', link: '/pages/front-end/vue3/10-1-基本使用'},
+                  {text: '路由器工作模式', link: '/pages/front-end/vue3/10-2-路由器工作模式'},
+                  {text: '嵌套路由', link: '/pages/front-end/vue3/10-3-嵌套路由'},
+                  {text: '路由传参', link: '/pages/front-end/vue3/10-4-路由传参'},
+                  {text: 'replace属性', link: '/pages/front-end/vue3/10-5-replace属性'},
+                  {text: '编程式导航', link: '/pages/front-end/vue3/10-6-编程式导航'},
+                  {text: '导航守卫', link: '/pages/front-end/vue3/10-7-导航守卫'},
+                  {text: '组合式API', link: '/pages/front-end/vue3/10-8-组合式API'},
+                  {text: '动态路由', link: '/pages/front-end/vue3/10-9-动态路由'},
+                ]
+              },
             ]
           }, 
         ]
       },
       {
         text: 'Examples',
-        collapsed: false,
+        collapsed: true,
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' }
