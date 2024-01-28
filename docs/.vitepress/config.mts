@@ -139,6 +139,9 @@ export default defineConfig({
                 ]
               },
               {text: '自定义hook', link: '/pages/front-end/vue3/9-自定义hook'},
+              {text: '内置指令', link: '/pages/front-end/vue3/11-内置指令'},
+              {text: '自定义指令', link: '/pages/front-end/vue3/12-自定义指令'},
+              {text: '插件', link: '/pages/front-end/vue3/13-插件'},
               {
                 text: '路由',
                 collapsed: true,
