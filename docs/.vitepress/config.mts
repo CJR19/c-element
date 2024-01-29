@@ -142,6 +142,7 @@ export default defineConfig({
               {text: '内置指令', link: '/pages/front-end/vue3/11-内置指令'},
               {text: '自定义指令', link: '/pages/front-end/vue3/12-自定义指令'},
               {text: '插件', link: '/pages/front-end/vue3/13-插件'},
+              {text: '渲染函数', link: '/pages/front-end/vue3/14-渲染函数'},
               {
                 text: '路由',
                 collapsed: true,
