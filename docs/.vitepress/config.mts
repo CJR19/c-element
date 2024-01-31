@@ -159,6 +159,14 @@ export default defineConfig({
                   {text: '动态路由', link: '/pages/front-end/vue3/10-9-动态路由'},
                 ]
               },
+              {
+                text: 'pinia',
+                collapsed: true,
+                items: [
+                  {text: '基础', link: '/pages/front-end/vue3/pinia/1-基础'},
+                  {text: 'store', link: '/pages/front-end/vue3/pinia/2-store'},
+                ]
+              }
             ]
           }, 
         ]
