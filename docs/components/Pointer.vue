@@ -78,6 +78,7 @@ onUnmounted(() => {
     margin-left: -16px;
     transition: transform 0.1s ease-in-out, color 0.8s ease-in-out;
     pointer-events: none;
+    color: #fff;
 }
 
 .c-pointer .fire {

@@ -51,7 +51,7 @@ export default {
     },
     modes: {
       grab: { distance: 400, line_linked: { opacity: 1 } },
-      bubble: { distance: 250, size: 0, duration: 2, opacity: 0, speed: 3 },
+      bubble: { distance: 200, size: 0, opacity: 0, speed: 2 },
       repulse: { distance: 400, duration: 0.4 },
       push: { particles_nb: 4 },
       remove: { particles_nb: 2 },
