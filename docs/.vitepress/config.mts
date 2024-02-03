@@ -101,7 +101,33 @@ export default defineConfig({
           },
           { text: 'CSS', link: '/pages/front-end/css' },
           { text: 'HTML', link: '/pages/front-end/html' },
-          { text: 'TypeScript', link: '/pages/front-end/ts' },
+          { 
+            text: 'TypeScript', 
+            collapsed: true,
+            items: [
+              {text: '01-什么是TypeScript', link: '/pages/front-end/typescript/01-什么是TypeScript'},
+              {text: '02-安装TypeScript', link: '/pages/front-end/typescript/02-安装TypeScript'},
+              {text: '03-起始', link: '/pages/front-end/typescript/03-起始'},
+              {text: '04-原始数据类型', link: '/pages/front-end/typescript/04-原始数据类型'},
+              {text: '05-任意值', link: '/pages/front-end/typescript/05-任意值'},
+              {text: '06-类型推断', link: '/pages/front-end/typescript/06-类型推断'},
+              {text: '07-联合类型', link: '/pages/front-end/typescript/07-联合类型'},
+              {text: '08-对象类型-接口', link: '/pages/front-end/typescript/08-对象类型-接口'},
+              {text: '09-数组类型', link: '/pages/front-end/typescript/09-数组类型'},
+              {text: '10-函数类型', link: '/pages/front-end/typescript/10-函数类型'},
+              {text: '11-类型断言', link: '/pages/front-end/typescript/11-类型断言'},
+              {text: '12-声明文件', link: '/pages/front-end/typescript/12-声明文件'},
+              {text: '13-内置对象', link: '/pages/front-end/typescript/13-内置对象'},
+              {text: '14-类型别名', link: '/pages/front-end/typescript/14-类型别名'},
+              {text: '15-字符串字面量类型', link: '/pages/front-end/typescript/15-字符串字面量类型'},
+              {text: '16-枚举', link: '/pages/front-end/typescript/16-枚举'},
+              {text: '17-类', link: '/pages/front-end/typescript/17-类'},
+              {text: '18-类与接口', link: '/pages/front-end/typescript/18-类与接口'},
+              {text: '19-泛型', link: '/pages/front-end/typescript/19-泛型'},
+              {text: '20-声明合并', link: '/pages/front-end/typescript/20-声明合并'},
+
+            ]
+          },
           { 
             text: 'Vue',
             collapsed: true,
@@ -129,7 +155,7 @@ export default defineConfig({
               {text: '生命周期', link: '/pages/front-end/vue3/7-生命周期'},
               {
                 text: '组件', 
-                collapsed: true,
+                collapsed: false,
                 items: [
                   {text: 'props', link: '/pages/front-end/vue3/8-1-props'},
                   {text: 'emit', link: '/pages/front-end/vue3/8-2-emit'},
@@ -144,27 +170,61 @@ export default defineConfig({
               {text: '插件', link: '/pages/front-end/vue3/13-插件'},
               {text: '渲染函数', link: '/pages/front-end/vue3/14-渲染函数'},
               {
-                text: '路由',
-                collapsed: true,
+                text: 'vue router',
+                collapsed: false,
                 items: [
-                  {text: '介绍', link: '/pages/front-end/vue3/10-0-路由v-router'},
-                  {text: '基本使用', link: '/pages/front-end/vue3/10-1-基本使用'},
-                  {text: '路由器工作模式', link: '/pages/front-end/vue3/10-2-路由器工作模式'},
-                  {text: '嵌套路由', link: '/pages/front-end/vue3/10-3-嵌套路由'},
-                  {text: '路由传参', link: '/pages/front-end/vue3/10-4-路由传参'},
-                  {text: 'replace属性', link: '/pages/front-end/vue3/10-5-replace属性'},
-                  {text: '编程式导航', link: '/pages/front-end/vue3/10-6-编程式导航'},
-                  {text: '导航守卫', link: '/pages/front-end/vue3/10-7-导航守卫'},
-                  {text: '组合式API', link: '/pages/front-end/vue3/10-8-组合式API'},
-                  {text: '动态路由', link: '/pages/front-end/vue3/10-9-动态路由'},
+                  {text: '介绍', link: '/pages/front-end/vue3/vue-router/10-0-路由v-router'},
+                  {text: '基本使用', link: '/pages/front-end/vue3/vue-router/10-1-基本使用'},
+                  {text: '路由器工作模式', link: '/pages/front-end/vue3/vue-router/10-2-路由器工作模式'},
+                  {text: '嵌套路由', link: '/pages/front-end/vue3/vue-router/10-3-嵌套路由'},
+                  {text: '路由传参', link: '/pages/front-end/vue3/vue-router/10-4-路由传参'},
+                  {text: 'replace属性', link: '/pages/front-end/vue3/vue-router/10-5-replace属性'},
+                  {text: '编程式导航', link: '/pages/front-end/vue3/vue-router/10-6-编程式导航'},
+                  {text: '导航守卫', link: '/pages/front-end/vue3/vue-router/10-7-导航守卫'},
+                  {text: '组合式API', link: '/pages/front-end/vue3/vue-router/10-8-组合式API'},
+                  {text: '动态路由', link: '/pages/front-end/vue3/vue-router/10-9-动态路由'},
+                ]
+              },
+              {
+                text: 'vuex',
+                collapsed: false,
+                items: [
+                  {text: '1-vuex初识', link: '/pages/front-end/vue3/vuex/1-vuex初识'},
+                  {text: '2-安装', link: '/pages/front-end/vue3/vuex/2-安装'},
+                  {text: '3-vuex应用', link: '/pages/front-end/vue3/vuex/3-vuex应用'},
+                  {text: '4-State', link: '/pages/front-end/vue3/vuex/4-State'},
+                  {text: '5-Getter', link: '/pages/front-end/vue3/vuex/5-Getter'},
+                  {text: '6-Mutations', link: '/pages/front-end/vue3/vuex/6-Mutations'},
+                  {text: '7-Actions', link: '/pages/front-end/vue3/vuex/7-Actions'},
+                  {text: '8-Modules', link: '/pages/front-end/vue3/vuex/8-Modules'},
                 ]
               },
               {
                 text: 'pinia',
-                collapsed: true,
+                collapsed: false,
                 items: [
                   {text: '基础', link: '/pages/front-end/vue3/pinia/1-基础'},
-                  {text: 'store', link: '/pages/front-end/vue3/pinia/2-store'},
+                  {text: 'Store', link: '/pages/front-end/vue3/pinia/2-Store'},
+                  {text: 'State', link: '/pages/front-end/vue3/pinia/3-State'},
+                  {text: 'Getter', link: '/pages/front-end/vue3/pinia/4-Getter'},
+                  {text: 'Action', link: '/pages/front-end/vue3/pinia/5-Action'},
+                ]
+              },
+              {
+                text: 'vue相关总结',
+                collapsed: false,
+                items: [
+                  {text: '通信方式总结', link: '/pages/front-end/vue3/vue相关总结/通信方式总结'},
+                  {
+                    text: 'Vue3与Vue2的区别总结',
+                    collapsed: false,
+                    items: [
+                      {text: '01-v-for中的Ref数组', link: '/pages/front-end/vue3/vue相关总结/Vue3与Vue2的区别总结/01-v-for中的Ref数组'},
+                      {text: '02-异步组件', link: '/pages/front-end/vue3/vue相关总结/Vue3与Vue2的区别总结/02-异步组件'},
+                      {text: '03-自定义指令', link: '/pages/front-end/vue3/vue相关总结/Vue3与Vue2的区别总结/03-自定义指令'},
+                      {text: '04-侦听数组', link: '/pages/front-end/vue3/vue相关总结/Vue3与Vue2的区别总结/04-侦听数组'},
+                    ]
+                  },
                 ]
               }
             ]
