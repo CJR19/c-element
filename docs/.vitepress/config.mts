@@ -229,6 +229,24 @@ export default defineConfig({
               }
             ]
           }, 
+          {
+            text: 'NodeJs',
+            collapsed: true,
+            items: [
+              {text: '01-认识node', link: '/pages/front-end/nodejs/01-认识node'},
+              {text: '02-node环境安装', link: '/pages/front-end/nodejs/02-node环境安装'},
+              {text: '03-npm使用介绍', link: '/pages/front-end/nodejs/03-npm使用介绍'},
+              {text: '04-NodeJs模块', link: '/pages/front-end/nodejs/04-NodeJs模块'},
+              {text: '05-NodeJs包', link: '/pages/front-end/nodejs/05-NodeJs包'},
+              {text: '06-文件系统', link: '/pages/front-end/nodejs/06-文件系统'},
+              {text: '07-事件', link: '/pages/front-end/nodejs/07-事件'},
+              {text: '08-Buffer', link: '/pages/front-end/nodejs/08-Buffer'},
+              {text: '09-路径', link: '/pages/front-end/nodejs/09-路径'},
+              {text: '10-Http模块-服务器', link: '/pages/front-end/nodejs/10-Http模块-服务器'},
+              {text: '11-Http模块-路径分发', link: '/pages/front-end/nodejs/11-Http模块-路径分发'},
+              {text: '12-处理POST和GET请求', link: '/pages/front-end/nodejs/12-处理POST和GET请求'},
+            ]
+          }
         ]
       },
       {
