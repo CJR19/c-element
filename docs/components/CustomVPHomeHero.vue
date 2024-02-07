@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, h, onMounted,ref,nextTick } from 'vue'
-import { useData } from 'vitepress'
+import { computed, h, onMounted,ref,nextTick,onUnmounted,watch } from 'vue'
+import { useData, useRoute } from 'vitepress'
 import * as pagesData from '../pages.data'
 import { loadSlim } from "tsparticles-slim"; 
 import paticlesOptions from './particles.js'
@@ -11,10 +11,6 @@ import Typed from './Typed.vue';
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter, page, theme } = useData()
-
-const route = computed(() => {
-  return theme.value.sidebar
-})
 
 const sidebar = (props: any) => {
   let level = props.level || 1
@@ -89,6 +85,29 @@ const back = async () => {
     await nextTick()
     ferrisRef.value.back()
 }
+
+// 默认暗色主题
+const route = useRoute()
+
+const applyTheme = (to) => {
+  if (to.path === '/') {
+    // 如果是首页，应用暗色主题
+    document.documentElement.classList.add('dark')
+  } else {
+    // 如果是其他页面，移除暗色主题，使用正常主题
+    document.documentElement.classList.remove('dark')
+  }
+}
+
+// 监听路由变化
+watch(() => route.path, (toPath) => {
+  applyTheme({ path: toPath })
+})
+
+onMounted(() => {
+  applyTheme(route)
+})
+
 
 
 </script>
