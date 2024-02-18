@@ -96,7 +96,9 @@ export default defineConfig({
               text: 'HTML&CSS', 
               collapsed: true,
               items: [
-                {text: '浏览器渲染原理', link: '/pages/front-end/html_css/浏览器渲染原理'},
+                {text: '01-浏览器渲染原理', link: '/pages/front-end/html_css/01-浏览器渲染原理'},
+                {text: '02-垂直水平居中的方式', link: '/pages/front-end/html_css/02-垂直水平居中的方式'},
+                {text: '03-BFC(块级格式上下文)', link: '/pages/front-end/html_css/03-BFC(块级格式上下文)'},
               ]
             },
             { 
