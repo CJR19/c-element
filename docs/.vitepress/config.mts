@@ -47,7 +47,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'C-Element', link: '/pages/c-element-ui/style/color' },
-      { text: '前端知识笔记', link: '/pages/front-end/html_css/浏览器渲染原理' },
+      { text: '前端知识笔记', link: '/pages/front-end/html_css/01-浏览器渲染原理' },
       { text: 'Examples', link: '/api-examples' },
     ],
     sidebar: {
@@ -94,7 +94,7 @@ export default defineConfig({
           items: [
             { 
               text: 'HTML&CSS', 
-              collapsed: true,
+              collapsed: false,
               items: [
                 {text: '01-浏览器渲染原理', link: '/pages/front-end/html_css/01-浏览器渲染原理'},
                 {text: '02-垂直水平居中的方式', link: '/pages/front-end/html_css/02-垂直水平居中的方式'},
@@ -103,7 +103,7 @@ export default defineConfig({
             },
             { 
               text: 'JavaScript', 
-              collapsed: true,
+              collapsed: false,
               items: [
                 {text: '01-事件循环', link: '/pages/front-end/javascript/01-事件循环'},
                 {text: '02-this指向', link: '/pages/front-end/javascript/02-this指向'},
@@ -116,11 +116,9 @@ export default defineConfig({
                 {text: '09-Proxy&Reflct' , link: '/pages/front-end/javascript/09-Proxy&Reflct'},
               ]
             },
-            { text: 'CSS', link: '/pages/front-end/css' },
-            { text: 'HTML', link: '/pages/front-end/html' },
             { 
               text: 'TypeScript', 
-              collapsed: true,
+              collapsed: false,
               items: [
                 {text: '01-什么是TypeScript', link: '/pages/front-end/typescript/01-什么是TypeScript'},
                 {text: '02-安装TypeScript', link: '/pages/front-end/typescript/02-安装TypeScript'},
@@ -147,11 +145,11 @@ export default defineConfig({
             },
             { 
               text: 'Vue',
-              collapsed: true,
+              collapsed: false,
               items: [
                 {
                   text: 'vuex',
-                  collapsed: true,
+                  collapsed: false,
                   items: [
                     {text: '基础', link: '/pages/front-end/vue/vuex/基础'}
                   ]
@@ -161,7 +159,7 @@ export default defineConfig({
             }, 
             { 
               text: 'Vue3',
-              collapsed: true,
+              collapsed: false,
               items: [
                 {text: '简介' , link: '/pages/front-end/vue3/1-vue3简介'},
                 {text: '安装使用' , link: '/pages/front-end/vue3/2-创建vue3工程'},
@@ -248,7 +246,7 @@ export default defineConfig({
             }, 
             {
               text: 'NodeJs',
-              collapsed: true,
+              collapsed: false,
               items: [
                 {text: '01-认识node', link: '/pages/front-end/nodejs/01-认识node'},
                 {text: '02-node环境安装', link: '/pages/front-end/nodejs/02-node环境安装'},
@@ -270,7 +268,7 @@ export default defineConfig({
       '/examples/': [
         {
           text: 'Examples',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Markdown Examples', link: '/markdown-examples' },
             { text: 'Runtime API Examples', link: '/api-examples' }

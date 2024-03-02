@@ -1,0 +1,9 @@
+POST /m1/1569387-0-defaul/upload HTTP/1.1
+Host: 127.0.0.1:4523
+Content-Type: multipart/form-data; boundary=aaa
+
+---aaa
+Content-Disposition: form-data; name="avatar"; filename="test.png"
+Content-Type: image/jpeg
+< ./test.jpg
+---aaa---

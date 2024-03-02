@@ -77,7 +77,15 @@ This is a dangerous warning.
 :::
 
 ::: details
-This is a details block.
+```js{4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
 :::
 
 ## More

@@ -1,5 +1,10 @@
 ---
 outline: deep
+date: 2022-01-01
+tags:
+  - VitePress
+  - Frontmatter
+abc: 1 
 ---
 
 # Runtime API Examples
