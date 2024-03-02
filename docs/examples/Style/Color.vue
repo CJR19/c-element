@@ -14,12 +14,12 @@
 .md-color-brand {
     display: flex;
     flex-wrap: wrap;
-    div {
-        width: fit-content;
-        height: 50px;
-        text-align: center;
-        line-height: 50px;
-    }
+    // div {
+    //     width: fit-content;
+    //     height: 50px;
+    //     text-align: center;
+    //     line-height: 50px;
+    // }
 }
 
 </style>

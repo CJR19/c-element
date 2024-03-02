@@ -33,8 +33,7 @@ npm run serve
 - 轻量快速的热重载（`HMR`），能实现极速的服务启动。
 - 对 `TypeScript`、`JSX`、`CSS` 等支持开箱即用。
 - 真正的按需编译，不再等待整个应用编译完成。
-- `webpack`构建 与 `vite`构建对比图如下：
-	<img src="images/1683167182037-71c78210-8217-4e7d-9a83-e463035efbbe.png" alt="webpack构建" title="webpack构建" style="zoom:20%;box-shadow:0 0 10px black" />	<img src="images/1683167204081-582dc237-72bc-499e-9589-2cdfd452e62f.png" alt="vite构建" title="vite构建" style="zoom: 20%;box-shadow:0 0 10px black" />
+
 * 具体操作如下（点击查看[官方文档](https://cn.vuejs.org/guide/quick-start.html#creating-a-vue-application)）
 
 ```powershell
